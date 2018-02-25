@@ -20,19 +20,15 @@ header {
   color: #ff0687;
 }
 
-main li {
-  list-style: none;
-  float: left;
-  margin-top: 100px;
-}
-
-main li:nth-child(2n) {
-  margin: 20px 20px 20px 20px;
-}
-
-main img {
+main {
+  text-align: center;
+  font-family: 'Josefin Slab', serif;
+  background-color: #333;
   border-radius: 20px;
-  border: 20px solid white;
+  font-size: 2em;
+  color: white;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 footer {
