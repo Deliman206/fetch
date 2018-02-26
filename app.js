@@ -1,4 +1,7 @@
 'use strict';
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+
 var dog = [];
 
 var game=document.getElementById('game');
