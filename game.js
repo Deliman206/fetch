@@ -2,13 +2,12 @@
 var falling=false;
 var stage=document.getElementById('stage');
 var ctx=stage.getContext('2d');
-var dogX=0;
-var dogY=80;
 console.log('working');
 ctx.fillStyle='#3e94ff';
 ctx.fillRect(0,0,stage.width,stage.height*.6666);
 ctx.fillStyle='#009e00';
 ctx.fillRect(0,stage.height*.6666,stage.width,stage.height/3);
+
 function screenUpdate(){
   ctx.clearRect(0,0,stage.width,stage.height);
   ctx.fillStyle='#3e94ff';
@@ -16,9 +15,31 @@ function screenUpdate(){
   ctx.fillStyle='#009e00';
   ctx.fillRect(0,stage.height*.6666,stage.width,stage.height/3);
   ctx.fillStyle='#000000';
-  ctx.fillRect(dogX,dogY,20,20);
+  playerCharacter.render();
   ctx.fillStyle='#000000';
   testObstacle.render();
+}
+function gridCreation(){
+  console.log(stage.height);
+  console.log(stage.width);
+  this.gridWidth=stage.width/10;
+  this.gridHeight=stage.height/10;
+}
+
+function Player(x,y,height,width){
+  this.x=x;
+  this.y=y;
+  this.width=width;
+  this.height=height;
+  this.gridY=(this.y-80)/-10;
+  this.gridX=this.x/10;
+  this.gridwidth=width/10;
+  this.gridheight=height/10;
+  this.render=function(){
+    ctx.fillRect(this.x,this.y,this.height,this.width);
+    this.gridY=(this.y-80)/-10;
+    this.gridX=this.x/10;
+  };
 }
 
 function Obstacle(x,y,height,width){
@@ -26,18 +47,28 @@ function Obstacle(x,y,height,width){
   this.y=y;
   this.width=width;
   this.height=height;
+  this.gridY=(this.y-80)/-10;
+  this.gridX=this.x/10;
+  this.gridwidth=width/10;
+  this.gridheight=height/10;
   this.render=function(){
     this.x-=10;
-    ctx.fillRect(this.x,this.y,this,height,this.width);
+    ctx.fillRect(this.x,this.y,this.height,this.width);
+    this.gridY=(this.y-80)/-10;
+    this.gridX=this.x/10;
+    if(this.gridY===playerCharacter.gridY&&this.gridX===playerCharacter.gridX)
+    {
+      console.log('You Lose!');
+    }
   };
 }
 var testObstacle=new Obstacle(900,80,40,40);
-
+var playerCharacter=new Player(0,80,40,20);
 window.onkeydown=function(event){
   if(falling===true){
-    dogY+=10;
+    playerCharacter.y+=10;
     screenUpdate();
-    if (dogY===80)
+    if (playerCharacter.y===80)
     {
       falling=false;
     }
@@ -47,23 +78,27 @@ window.onkeydown=function(event){
     switch(keyPressed){
     //Right arrow
     case 39:
-      dogX+=5;
+      playerCharacter.x+=10;
       break;
     //Left arrow
     case 37:
-      dogX-=5;
+      playerCharacter.x-=10;
       break;
     //Down arrow
     case 40:
-      dogY-=5;
+      playerCharacter.y-=10;
       break;
     //Up arrow
     case 38:
-      dogY=40;
+      playerCharacter.y=40;
       falling=true;
       break;
     default:
       break;
     }}
   screenUpdate();
+};
+window.onload=function()
+{
+  gridCreation();
 };
