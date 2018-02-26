@@ -5,6 +5,7 @@ _As the user, we:_
   * are a dog playing fetch
   * get a point for every object caught
   * want to get as many points as possible within a certain time frame
+  * get points depending on distance travelled before catching
   * STRETCH GOAL: want to avoid obstacles in our way
 
 _As the developer, we want to:_

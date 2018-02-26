@@ -1,6 +1,7 @@
 # Wireframe Layout
 
 1. levelSelect.html - 
+  * this is our index.html page
   * get user Name
   * ask to select level
   * let user select dog type
