@@ -18,9 +18,9 @@ var bark1 = new Image(90,70);
 bark1.src = 'assets/KKona/dogBark1.png';
 dog.push(bark1);
 
-dog.onload = function draw(){
-    for(var i=0; i <dog.length; i++){
-        ctx.drawImage(dog[i], 50*i, 50*i);
-    }
+function draw(x,y){
+    console.log('proof of life');
+    dog[0].onload = function() { 
+        ctx.drawImage(dog[0], x, y) };
 }
-
+draw(10,10);

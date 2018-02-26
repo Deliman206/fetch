@@ -20,23 +20,7 @@ function dogIdle(){
       console.log(demo.src);
     }
 }
-.navbar{
-    list-style: none;
-    display:inline-block;
-    width:33%;
-    text-align: center;
-    border-right:1px solid black;
-}
-#rightlink{
-    border-style:none;
-}
-#navbar{
-    background-color: #3e94ff;
-}
-ul{
-    border-bottom:3px solid black;
-    margin-bottom:0px;
-}
+
 canvas{
     height:95%;
     width:100%;
@@ -44,9 +28,4 @@ canvas{
 }
 body{
     margin:0px;
-}
-header{
-    border-top:0px;
-    border-bottom: 3px;
-    border-color:black;
 }
