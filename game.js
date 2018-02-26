@@ -1,0 +1,11 @@
+'usestrict';
+var stage=document.getElementById('stage');
+var ctx=stage.getContext('2d');
+console.log('working');
+ctx.fillStyle='#3e94ff';
+ctx.fillRect(0,0,stage.width,stage.height*.6666);
+ctx.fillStyle='#009e00';
+ctx.fillRect(0,stage.height*.6666,stage.width,stage.height/3);
+var dog=new Image;
+dog.src='assets/KKona/dogBark0.png';
+ctx.drawImage(dog, stage.height*.7,stage.width/2);
