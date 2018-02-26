@@ -1,0 +1,52 @@
+function incrementTimer(){
+    Math.floor(timer+=1);
+        if(timer%3===0){
+        dogIdle();
+        }
+}
+//6 frame cycle of dog barking
+function dogIdle(){
+    ctx.clearRect(0,0,game.height, game.width);
+  if(timer%2===0){
+      var img=document.getElementById('bark0')
+      ctx.drawImage(img,10,10)
+      demo.src=('../assets/KKona/dogBark0.png')
+      console.log(demo.src);
+    }
+  if(timer%2===1){
+      var img=document.getElementById('bark1')
+      ctx.drawImage(img,10,10)
+      demo.src=('../assets/KKona/dogBark2.png')
+      console.log(demo.src);
+    }
+}
+.navbar{
+    list-style: none;
+    display:inline-block;
+    width:33%;
+    text-align: center;
+    border-right:1px solid black;
+}
+#rightlink{
+    border-style:none;
+}
+#navbar{
+    background-color: #3e94ff;
+}
+ul{
+    border-bottom:3px solid black;
+    margin-bottom:0px;
+}
+canvas{
+    height:95%;
+    width:100%;
+    display:inline-block;
+}
+body{
+    margin:0px;
+}
+header{
+    border-top:0px;
+    border-bottom: 3px;
+    border-color:black;
+}
