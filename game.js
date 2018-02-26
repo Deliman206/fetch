@@ -21,15 +21,17 @@ function screenUpdate(){
   testObstacle.render();
 }
 
-function Obstacle(x,y){
+function Obstacle(x,y,height,width){
   this.x=x;
   this.y=y;
+  this.width=width;
+  this.height=height;
   this.render=function(){
     this.x-=10;
-    ctx.fillRect(this.x,this.y,40,40);
+    ctx.fillRect(this.x,this.y,this,height,this.width);
   };
 }
-var testObstacle=new Obstacle(900,80);
+var testObstacle=new Obstacle(900,80,40,40);
 
 window.onkeydown=function(event){
   if(falling===true){
