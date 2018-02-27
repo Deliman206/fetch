@@ -1,5 +1,6 @@
 'use strict';
 
+
 var game=document.getElementById('game');
 
 var ctx=game.getContext('2d');
