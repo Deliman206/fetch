@@ -1,4 +1,4 @@
-'usestrict';
+'use strict';
 var obstacleTypes=new Array; 
 var falling=false; 
 var obstacleGridConstructors = new Array;

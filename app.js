@@ -1,6 +1,5 @@
 'use strict';
 
-
 var game=document.getElementById('game');
 
 var ctx=game.getContext('2d');
@@ -18,3 +17,4 @@ function drawDog(){
         ctx.drawImage(bark0, state.x+400, state.y) };  
     }
 drawDog();
+
