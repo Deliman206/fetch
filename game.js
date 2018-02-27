@@ -1,5 +1,6 @@
 'usestrict';
 var obstacleTypes=new Array;
+var contact=false;
 var falling=false;
 var obstacleGridConstructors = new Array;
 var stage=document.getElementById('stage');
@@ -35,14 +36,14 @@ function Player(x,y,height,width){
   this.y=y;
   this.width=width;
   this.height=height;
-  this.gridY=(this.y-80)/-10;
+  this.gridY=(this.y-90)/10;
   this.gridX=this.x/10;
-  this.gridCoordinates=([coordinates(this.gridX,this.gridY),coordinates(this.gridX+1,this.gridY)]);
+  this.collisionGrid=([coordinates(this.gridX,this.gridY),coordinates(this.gridX+1,this.gridY)]);
   this.render=function(){
     ctx.fillRect(this.x,this.y,this.height,this.width);
-    this.gridY=(this.y-80)/-10;
+    this.gridY=(this.y-90)/10;
     this.gridX=this.x/10;
-    this.gridCoordinates=([coordinates(this.gridX,this.gridY),coordinates(this.gridX+1,this.gridY)]);
+    this.collisionGrid=([coordinates(this.gridX,this.gridY),coordinates(this.gridX+1,this.gridY)]);
   };
 }
 
@@ -52,18 +53,33 @@ function Obstacle(x,y,obstacleType){
   this.pointValue=obstacleTypes[obstacleType].pointValue;
   this.width=obstacleTypes[obstacleType].width;
   this.height=obstacleTypes[obstacleType].height;
-  this.gridY=(this.y-80)/-10;
+  this.gridY=(this.y-80)/10;
   this.gridX=this.x/10;
   this.collisionGrid=new Array;
-  console.log(obstacleTypes[obstacleType].collisiongridconstructor());
   this.movespeed=obstacleTypes[obstacleType].movespeed;
   this.render=function(){
+    console.log([coordinates(this.gridX-1,this.gridY),coordinates(this.gridX,this.gridY),coordinates(this.gridX,this.gridY-1),coordinates(this.gridX-1,this.gridY-1)]);
+    this.collisionGrid=[coordinates(this.gridX-1,this.gridY),coordinates(this.gridX,this.gridY),coordinates(this.gridX,this.gridY-1),coordinates(this.gridX-1,this.gridY-1)];
     this.x-=this.movespeed;
     ctx.fillRect(this.x,this.y,this.height,this.width);
     this.gridY=(this.y-80)/-10;
     this.gridX=this.x/10;
     console.log(obstacleTypes[obstacleType].collisiongridconstructor());
-    if(this.gridY===playerCharacter.gridY&&this.gridX===playerCharacter.gridX)
+    for (var i=0;i<this.collisionGrid.length;i++)
+    {
+      for (var j=0;j<playerCharacter.collisionGrid.length;j++)
+      {
+        if(this.collisionGrid[i][0]===playerCharacter.collisionGrid[j][0])
+        {
+          if(this.collisionGrid[i][1]===playerCharacter.collisionGrid[j][1])
+          {
+            console.log('you have lost, loser.');
+            contact=true;
+          }
+        }
+      }
+    }
+    if(contact===true)
     {
       console.log('You Lose!');
     }
@@ -82,7 +98,7 @@ window.onkeydown=function(event){
   if(falling===true){
     playerCharacter.y+=10;
     screenUpdate();
-    if (playerCharacter.y===80)
+    if (playerCharacter.y===90)
     {
       falling=false;
     }
@@ -112,7 +128,6 @@ obstacleGridConstructors.push(
   function()
   {
     this.obstacleGrid=[coordinates(this.gridX,this.gridY),coordinates(this.gridX+1,this.gridY),coordinates(this.gridX+2,this.gridY),coordinates(this.gridX+1,this.gridY+1),coordinates(this.gridX+1,this.gridY+2)];
-    console.log([coordinates(this.gridX,this.gridY),coordinates(this.gridX+1,this.gridY),coordinates(this.gridX+2,this.gridY),coordinates(this.gridX+1,this.gridY+1),coordinates(this.gridX+1,this.gridY+2)]);
     console.log('functioncalled.');
   });
 obstacleGridConstructors.push(
@@ -144,7 +159,8 @@ function gameBoot(){gridCreation();
   new ObstacleTypeConstructor('rat',10,10,2,20,100);
   new ObstacleTypeConstructor('bird',10,10,2,20,100);
   new ObstacleTypeConstructor('box',20,20,3,10,100);
-  new ObstacleTypeConstructor('raccoon',10,20,4,20,300);}
+  new ObstacleTypeConstructor('raccoon',10,20,4,20,300);
+}
 function ObstacleTypeConstructor(name,width,height,collisiongrid,movespeed,pointValue){
   this.name=name;
   this.width=width;
@@ -156,6 +172,8 @@ function ObstacleTypeConstructor(name,width,height,collisiongrid,movespeed,point
   obstacleTypes.push(this);
 }
 gameBoot();
-var testObstacle=new Obstacle(400,80,0);
-var playerCharacter=new Player(0,80,40,20);
+var testObstacle=new Obstacle(400,70,0);
+testObstacle.render;
+var playerCharacter=new Player(0,90,20,10);
+Player.render;
 //Obstacle types not being pushed onto. obstacleTypeConstructor is returning undefined.
