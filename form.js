@@ -20,10 +20,8 @@ formLevel.addEventListener('change', levelHandler);
 function submitHandler(e) {
   e.preventDefault();
   var currentLevel = e.target.levels.value;
-  var userName = e.target.name;
-  level = Number(currentLevel);
-  console.log('Level: ' + currentLevel);
-  console.log('name: ' + userName);
-  
+  var userName = e.target.name.value;
+  console.log(currentLevel);
+  console.log(userName);
 }
-formSubmit.addEventListener('click', submitHandler);
+formSubmit.addEventListener('submit', submitHandler);
