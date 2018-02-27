@@ -2,6 +2,10 @@
 var game = document.getElementById('game');
 var allscreen = document.getElementById('html');
 var ctx0 = game.getContext('2d');
+var timer=0;
+var playable=false;
+var jumping=false;
+var keyPressed;
 // var obstacles = [fireH()];
 //Game Character
 var player = new Image(90,70);
@@ -9,63 +13,67 @@ player.src = 'assets/KKona/dogBark0.png';
 var fireH = new Image( 90, 70);
 fireH.src = 'img/pond.png';
 var gameState ={
-    x:1000,
-    y:350,
-    score:0
-}
+  x:1000,
+  y:350,
+  score:0
+};
 var playerState = {
-    x:450,
-    y:400
+  x:450,
+  y:400
+};
+function refreshPlayer(){
+  player.onload = function() { 
+    ctx0.drawImage(player, playerState.x, playerState.y);
+  };
 }
-// function drawObstacle(this){
-//     this.onload = function(){
-//         setInterval(function(){
-//             ctx0.clearRect(0,0,900,500);
-//             ctx0.drawImage(this, gameState.x, gameState.y)
-//             // for( var i =0; i<1; i++){
-//             //     ctx0.drawImage(fireH, gameState.x +400*i, gameState.y+350);
-//             // }
-//             gameState.x--;    
-//         },10)
-//     }
-// }
-function drawPlayer(){
-    player.onload = function() { 
-        ctx0.drawImage(player, playerState.x, playerState.y) 
-    } 
+function play()
+{
+  playable=true;
+}
+
+setInterval(function(){
+  timer+=1;
+  refreshPlayer();
+  inputCheck();
+},2);
+
+function inputCheck(){
+  if(playable===true){
+    if(jumping===false){
+      if(keyPressed===39){ //Right arrow
+        console.log('pressed');
+        ctx0.clearRect(0,0,game.width,game.height);
+        playerState.x+=2;
+        ctx0.drawImage(player, playerState.x, playerState.y);}
+      //Left arrow
+      if(keyPressed===37){
+        console.log('pressed');
+        ctx0.clearRect(0,0,game.width,game.height);
+        playerState.x-=2;
+        ctx0.drawImage(player, playerState.x, playerState.y);}
+      if(keyPressed===38){
+        console.log('jumping');
+        jumping=true;}
+    }
+  }
 }
 
 function keyDown(event){
-    var keyPressed=event.keyCode;
-    switch(keyPressed){
-        case 39: //Right arrow
-        console.log('pressed');
-            ctx0.clearRect(0,0,game.width,game.height);
-            playerState.x+=10;
-            ctx0.drawImage(player, playerState.x, playerState.y);
-        break;
-      //Left arrow
-        case 37:
-        console.log('pressed');
-            ctx0.clearRect(0,0,game.width,game.height);
-            playerState.x-=10;
-            ctx0.drawImage(player, playerState.x, playerState.y);
-        break;
-        default:
-        break;
-    }
-}
+  keyPressed=event.keyCode;}
+function keyUp(){
+  keyPressed=6969696969696969;}
+window.addEventListener('keyup',keyUp);
+window.addEventListener('keydown',keyDown);
 //This should be adjusted for right/bottom side collisions
 if (playerState.x === gameState.x || playerState.x === gameState.x){
-    window.removeEventListener('keydown', keyDown);
-    playerState.y -=100;
+  playable=false;
+  playerState.y -=100;
 }
 
-
-//>>>>>>>>>>>>>>>>>>//
+//>>>>>>>>>>>>>>>>>>    //
 //  Calls for operation //
-//>>>>>>>>>>>>>>>>>>>>//    
-drawPlayer();
+//>>>>>>>>>>>>>>>>>>>>  //
+refreshPlayer();
 // drawObstacle(fireH);
 // ctx.clearRect(0,0,game.x,game.y);
-window.addEventListener('keydown', keyDown);
+play();
