@@ -1,29 +1,20 @@
 'use strict';
-var canvas = document.getElementById('canvas');
-var ctx = canvas.getContext('2d');
 
-var dog = [];
 
 var game=document.getElementById('game');
+
 var ctx=game.getContext('2d');
-
-
-ctx.fillStyle='#3e94ff ';
-ctx.fillRect(0,0,game.width, game.height);
-ctx.fillStyle='#009e00 ';
-ctx.fillRect(0,350,game.width, game.height/3);
-
-
+// ctx.globalCompositeOperation='destination-over';
+var state ={
+    x: 0,
+    y: 150
+}
 var bark0 = new Image(90,70);
 bark0.src = 'assets/KKona/dogBark0.png';
-dog.push(bark0);
-var bark1 = new Image(90,70);
-bark1.src = 'assets/KKona/dogBark1.png';
-dog.push(bark1);
 
-function draw(x,y){
+function drawDog(){
     console.log('proof of life');
-    dog[0].onload = function() { 
-        ctx.drawImage(dog[0], x, y) };
-}
-draw(10,10);
+    bark0.onload = function() { 
+        ctx.drawImage(bark0, state.x+400, state.y) };  
+    }
+drawDog();
