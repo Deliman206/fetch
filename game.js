@@ -4,6 +4,7 @@ var contact=false;
 var falling=false;
 var stage=document.getElementById('stage');
 var ctx=stage.getContext('2d');
+var gameStart=false;
 console.log('working');
 //Background Image (this becomes invisible)
 ctx.fillStyle='#3e94ff';
@@ -110,34 +111,38 @@ function coordinates(x,y)
   return[x,y];
 }
 window.onkeydown=function(event){
-  if(falling===true){
-    playerCharacter.y+=10;
-    screenUpdate();
-    if (playerCharacter.y===90)
-    {
-      falling=false;
+  if(gameStart=true){
+    if(falling===true){
+      playerCharacter.y+=10;
+      screenUpdate();
+      if (playerCharacter.y===90)
+      {
+        falling=false;
+      }
     }
-  }
+    else{
+      var keyPressed=event.keyCode;
+      switch(keyPressed){
+      //Right arrow
+      case 39:
+        playerCharacter.x+=10;
+        break;
+      //Left arrow
+      case 37:
+        playerCharacter.x-=10;
+        break;
+      //Up arrow
+      case 38:
+        playerCharacter.y=40;
+        falling=true;
+        break;
+      default:
+        break;
+      }}
+    screenUpdate();}
   else{
-    var keyPressed=event.keyCode;
-    switch(keyPressed){
-    //Right arrow
-    case 39:
-      playerCharacter.x+=10;
-      break;
-    //Left arrow
-    case 37:
-      playerCharacter.x-=10;
-      break;
-    //Up arrow
-    case 38:
-      playerCharacter.y=40;
-      falling=true;
-      break;
-    default:
-      break;
-    }}
-  screenUpdate();
+    return();
+  };
 };
 //running .obstacleObstacleGrid gives you an array of 2 integer arrays which are checked against other results from .obstacleGrid. There has to be a constructor which pulls from an array of these to assign them to each entity.
 function gameBoot(){
