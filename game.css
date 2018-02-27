@@ -35,10 +35,14 @@ ul{
     z-index: 1;
 }
 #game{
-    z-index: 999;
+    z-index: 3;
     background-color: transparent;
 }
 #background2{
     z-index: 2;
+    background-color: transparent;
+}
+#obstacles{
+    z-index:4;
     background-color: transparent;
 }
