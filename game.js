@@ -139,14 +139,12 @@ obstacleGridConstructors.push(
 //running .obstacle grid gives you an array of 2 integer arrays which are checked against other results from .obstacleGrid. There has to be a constructor which pulls from an array of these to assign them to each entity.
 function gameBoot(){gridCreation();
 //0 is mailbox, 1 is cat, 2 is rat and bird, 3 is box, 4 is raccoon.
-  var mailboxObject= new ObstacleTypeConstructor('mailbox',30,30,0,10,500);
-  var catObject= new ObstacleTypeConstructor('cat',20,10,1,30,250);
-  var ratObject= new ObstacleTypeConstructor('rat',10,10,2,20,100);
-  var birdObject= new ObstacleTypeConstructor('bird',10,10,2,20,100);
-  var boxObject= new ObstacleTypeConstructor('box',20,20,3,10,100);
-  var racoonObject= new ObstacleTypeConstructor('raccoon',10,20,4,20,300);
-  console.log(mailboxObject);
-  console.log(racoonObject);
+  new ObstacleTypeConstructor('mailbox',30,30,0,10,500);
+  new ObstacleTypeConstructor('cat',20,10,1,30,250);
+  new ObstacleTypeConstructor('rat',10,10,2,20,100);
+  new ObstacleTypeConstructor('bird',10,10,2,20,100);
+  new ObstacleTypeConstructor('box',20,20,3,10,100);
+  new ObstacleTypeConstructor('raccoon',10,20,4,20,300);}
 function ObstacleTypeConstructor(name,width,height,collisiongrid,movespeed,pointValue){
   this.name=name;
   this.width=width;
