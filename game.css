@@ -21,6 +21,20 @@ ul{
     border-bottom:3px solid black;
     margin-bottom:0px;
 }
-canvas{
-    margin-left:10%;
+.container{
+    position:relative;
+    width:900px;
+    height:500px;
+}
+.container canvas{
+    position: absolute;
+    top:0;
+    left:0;
+}
+#background{
+    z-index: 1;
+}
+#game{
+    z-index: 999;
+    background-color: transparent;
 }
