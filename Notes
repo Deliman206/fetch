@@ -29,3 +29,28 @@ canvas{
 body{
     margin:0px;
 }
+
+// function drawObstacle(this){
+//     this.onload = function(){
+//         setInterval(function(){
+//             ctx0.clearRect(0,0,900,500);
+//             ctx0.drawImage(this, gameState.x, gameState.y)
+//             // for( var i =0; i<1; i++){
+//             //     ctx0.drawImage(this, gameState.x +400*i, gameState.y+350);
+//             // }
+//             gameState.x--;    
+//         },10)
+//     }
+// }
+// function drawfireH(){
+//     fireH.onload = function(){
+//         setInterval(function(){
+//             ctx0.clearRect(0,0,900,500);
+//             ctx0.drawImage(fireH, gameState.x, gameState.y)
+//             // for( var i =0; i<1; i++){
+//             //     ctx0.drawImage(this, gameState.x +400*i, gameState.y+350);
+//             // }
+//             gameState.x--;    
+//         },10)
+//     }
+// }

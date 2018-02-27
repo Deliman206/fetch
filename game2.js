@@ -17,18 +17,7 @@ var playerState = {
     x:450,
     y:400
 }
-// function drawObstacle(this){
-//     this.onload = function(){
-//         setInterval(function(){
-//             ctx0.clearRect(0,0,900,500);
-//             ctx0.drawImage(this, gameState.x, gameState.y)
-//             // for( var i =0; i<1; i++){
-//             //     ctx0.drawImage(fireH, gameState.x +400*i, gameState.y+350);
-//             // }
-//             gameState.x--;    
-//         },10)
-//     }
-// }
+
 function drawPlayer(){
     player.onload = function() { 
         ctx0.drawImage(player, playerState.x, playerState.y) 
@@ -67,5 +56,6 @@ if (playerState.x === gameState.x || playerState.x === gameState.x){
 //>>>>>>>>>>>>>>>>>>>>//    
 drawPlayer();
 // drawObstacle(fireH);
+// drawfireH();
 // ctx.clearRect(0,0,game.x,game.y);
 window.addEventListener('keydown', keyDown);
