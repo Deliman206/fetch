@@ -42,3 +42,10 @@ ul{
     z-index: 2;
     background-color: transparent;
 }
+#form{
+    background: #f3f1f1;
+    text-align: center;
+    border: 1px #8a8a8a groove;
+    width: 300px;
+    padding: 3px 0px 3px 0px;
+}
