@@ -6,6 +6,11 @@ var playable=false;
 var keyPressed=83;
 //This is so when you hold a direction it doesn't slow down.
 var inputValidation=false;
+var oldInputButton;
+//This is so you keep running after a jump.
+var keyHeldLeft;
+var keyHeldRight;
+var keyHeldUp;
 // var obstacles = [fireH()];
 //Game Character
 var dogImages=new Array;
@@ -97,28 +102,37 @@ function inputCheck(){
         ctx0.drawImage(player, playerState.x, playerState.y);
         playerState.jumpDirection=1;
         playerState.walkCycleSpeed=45;
-        console.log(keyPressed);
-        console.log(oldInputButton);}
+        keyHeldRight=39;}
       //Left arrow
       if(keyPressed===37){
         ctx0.clearRect(0,0,game.width,game.height);
         playerState.x-=1;
         ctx0.drawImage(player, playerState.x, playerState.y);
         playerState.jumpDirection=2;
-        playerState.walkCycleSpeed=20;}
+        playerState.walkCycleSpeed=20;
+        keyHeldLeft=37;}
       if(keyPressed===38){
         playerState.jumping=0;
         playerState.momentum='up';
-        console.log(playerState.y);}
+        console.log(playerState.y);
+        keyHeldUp=38;}
       break;
     case 98:
       playerState.y+=2;
       playerState.jumping+=1;
       ctx0.clearRect(0,0,game.width,game.height);
       ctx0.drawImage(player, playerState.x, playerState.y);
-      if(keyPressed!==83){
-        keyPressed=oldInputButton;}
-      inputCheck();
+      console.log(keyPressed);
+      if(keyHeldLeft===37)
+      {keyPressed=keyHeldLeft;}else
+      if(keyHeldRight===39)
+      {keyPressed=keyHeldRight;}else
+      if(keyHeldUp===38)
+      {keyPressed=keyHeldUp;}
+      if(keyHeldLeft!==37&&keyHeldRight!==39&&keyHeldUp!==38)
+      {keyPressed=83;
+        console.log(keyPressed);
+        playerState.jumpDirection=0;}
       break;
     case 49:
       playerState.momentum='down';
@@ -160,13 +174,25 @@ function keyDown(event){
   { oldInputButton=keyPressed;
     keyPressed=event.keyCode;
     inputValidation=true;
-    console.log(keyPressed);}}
-function keyUp(){
+  }}
+function keyUp(event){
   keyPressed=83;
+  if(keyHeldLeft===event.keyCode)
+  {
+    keyHeldLeft=83;
+  }
+  if(keyHeldRight===event.keyCode)
+  {
+    keyHeldRight=83;
+  }
+  if(keyHeldUp===event.keyCode)
+  {
+    keyHeldUp=83;
+  }
   inputValidation=false;
   if(playerState.jumping===99){
-    playerState.jumpDirection=0;}}
-playerState.walkCycleSpeed=30;
+    playerState.jumpDirection=0;}
+  playerState.walkCycleSpeed=30;}
 window.addEventListener('keyup',keyUp);
 window.addEventListener('keydown',keyDown);
 //This should be adjusted for right/bottom side collisions
@@ -174,7 +200,6 @@ if (playerState.x === gameState.x || playerState.x === gameState.x){
   playable=false;
   playerState.y -=100;
 }
-
 //>>>>>>>>>>>>>>>>>>    //
 //  Calls for operation //
 //>>>>>>>>>>>>>>>>>>>>  //
