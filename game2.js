@@ -4,9 +4,8 @@ var allscreen = document.getElementById('html');
 var ctx0 = game.getContext('2d');
 var playable=false;
 var keyPressed=83;
-//This is so when you hold a direction after jumping you keep going.
+//This is so when you hold a direction it doesn't slow down.
 var inputValidation=false;
-var oldInputButton;
 // var obstacles = [fireH()];
 //Game Character
 var dogImages=new Array;
