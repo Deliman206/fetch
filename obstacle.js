@@ -11,12 +11,11 @@ function Obstacle(name, filePath, score){
     };
     this.name = name;
     this.filePath = filePath;
-    this.score = score
+    this.score = score;
     this.renderImage();
     obstacles.push(this);
 }
 Obstacle.prototype.renderImage = function(){
-    
     this.name = new Image(10,5);
     this.name.src = this.filePath;  
 }
@@ -34,8 +33,7 @@ var fireH = new Obstacle ('fireH', 'img/fireHydrant.png', 15);
 //render obj on screen at rand num 
 // var randomNum = //
 // function that does  this ===> obstacles[0].drawObstacle(5);
-//     but makes it random and shows up with space inbetween, so many obstacles on the screenLeft
-
+//but makes it random and shows up with space inbetween, so many obstacles on the screenLeft
 
 
 // console.log(obstacles[0]);
