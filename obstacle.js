@@ -4,7 +4,7 @@ var ctx3 = object.getContext('2d');
 
 var obstacles = [];
 function Obstacle(name, filePath, score){
-    var obstacleState = {
+    this.obstacleState = {
         x : 1000,
         y : 350,
         // Hard code width by looking at image dimentions 
@@ -12,29 +12,31 @@ function Obstacle(name, filePath, score){
     this.name = name;
     this.filePath = filePath;
     this.score = score
-    // this.renderImage();
+    this.renderImage();
     obstacles.push(this);
 }
-// Obstacle.prototype.renderImage = function(){
-//     var tempImg = this.name;
-//     tempImg = new Image(10,5);
-//     tempImg.src = this.filePath;  
-// }
-Obstacle.prototype.drawObstacle= function(){
-    var tempImg = this.name;
-    tempImg = new Image(10,5);
-    tempImg.src = this.filePath;  
-    tempImg.onload = function(){
-        setInterval(function(){
-            ctx3.clearRect(0,0,900,500);
-            ctx3.drawImage(tempImg, this.obstacleState.x, this.obstacleState.y);
-            this.obstacleState.x--;    
-        },10)
-    }
+Obstacle.prototype.renderImage = function(){
+    
+    this.name = new Image(10,5);
+    this.name.src = this.filePath;  
 }
-var fireH = new Obstacle (fireH, 'img/fireHydrant.png', 15);
+Obstacle.prototype.drawObstacle= function(interval){
+    // this.name.onload = function(){
+            setInterval(()=>{
+            ctx3.clearRect(0,0,900,500);
+            ctx3.drawImage(this.name, this.obstacleState.x, this.obstacleState.y);
+            this.obstacleState.x--;    
+        },interval)
+    // }
+}
+var fireH = new Obstacle ('fireH', 'img/fireHydrant.png', 15);
 //create rand num
 //render obj on screen at rand num 
+// var randomNum = //
+// function that does  this ===> obstacles[0].drawObstacle(5);
+//     but makes it random and shows up with space inbetween, so many obstacles on the screenLeft
 
-console.log(obstacles[0]);
-obstacles[0].drawObstacle();
+
+
+// console.log(obstacles[0]);
+obstacles[0].drawObstacle(50);
