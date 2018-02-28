@@ -1,6 +1,5 @@
 'use strict';
 var game = document.getElementById('game');
-var allscreen = document.getElementById('html');
 var ctx0 = game.getContext('2d');
 var playable=false;
 var keyPressed=83;
