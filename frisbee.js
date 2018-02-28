@@ -1,6 +1,6 @@
 'use strict';
 var canvas = document.getElementById('frisbee');
-var ctx = canvas.getContext('2d');
+var context = canvas.getContext('2d');
 
 var frisbee = function(name, score) {
   this.name = name;
