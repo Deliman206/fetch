@@ -1,30 +1,36 @@
 'use strict';
+var frisbeeObj = new Frisbee();
 var canvas = document.getElementById('frisbee');
 var context = canvas.getContext('2d');
 
-function frisbee(name, score) {
-  this.name = name;
-  this.score = score;
-  this.filePath = 'img/fris_4.png';
+function Frisbee() {
   this.state = {
-    x: 0,
+    x: 250,
     y: 0
   };
-  this.render();
-  this.draw();
+  this.score = 0;
+  this.image = new Image();
+  this.image.src = 'img/fris_4.png';
 }
 
-frisbee.prototype.render = function() {
-  this.name = new Image(5, 5);
-  this.name.src = this.filePath;
+Frisbee.prototype.launch = function(interval) {
+  setInterval(()=>{
+    //Starting launch coords
+    var xPos = 0;
+    var yPos = 250;
+
+    context.clearRect(0, 0, 900 ,500);
+    context.drawImage(this.image, this.state.x, this.state.y, 60, 25);
+  }, interval);
 };
 
-frisbee.prototype.draw = function(interval) {
+Frisbee.prototype.draw = function(interval) {
   setInterval(()=>{
-    context.clearRect(0,0,900,500);
-    context.drawImage(this.name, this.state.x, this.state.y);
-  },interval);
+    context.clearRect(0, 0, 900 ,500);
+    context.drawImage(this.image, this.state.x, this.state.y, 60, 25);
+    this.state.y += 1;
+  }, interval);
 };
-var fris = new frisbee('Frisbee', 100);
-fris.render();
-fris.draw(20);
+
+frisbeeObj.draw(50);
+
