@@ -1,6 +1,5 @@
 'use strict';
 var game = document.getElementById('game');
-var allscreen = document.getElementById('html');
 var ctx0 = game.getContext('2d');
 var playable=false;
 var keyPressed=83;
@@ -167,8 +166,6 @@ console.log(playerState.momentum);
 break;}
 }
 }
-
-game2.js
 
 function keyDown(event){
 if(inputValidation===false||oldInputButton===38||event.keyCode===38)
