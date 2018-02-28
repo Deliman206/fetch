@@ -3,19 +3,24 @@ var game = document.getElementById('game');
 var allscreen = document.getElementById('html');
 var ctx0 = game.getContext('2d');
 var playable=false;
-var keyPressed;
+var keyPressed=83;
+//This is so when you hold a direction after jumping you keep going.
+var inputValidation=false;
+var oldInputButton;
 // var obstacles = [fireH()];
 //Game Character
 var dogImages=new Array;
+var dogJumpingImages=new Array;
 dogImages.push('assets/Running/run_0.png');
 dogImages.push('assets/Running/run_1.png');
 dogImages.push('assets/Running/run_2.png');
 dogImages.push('assets/Running/run_3.png');
 dogImages.push('assets/Running/run_4.png');
 dogImages.push('assets/Running/run_5.png');
-dogImages.push('assets/Running/run_6.png');
 dogImages.push('assets/Running/run_7.png');
 dogImages.push('assets/Running/run_8.png');
+dogJumpingImages.push('assets/Jumping/jump_0.png');
+dogJumpingImages.push('assets/Jumping/jump_1.png');
 var player = new Image(90,70);
 player.src = 'assets/KKona/dogBark0.png';
 var fireH = new Image( 90, 70);
@@ -31,63 +36,96 @@ var playerState = {
   x:450,
   y:333,
   jumping:99,
-  walkCycle:0,
-  jumpDirection:0
+  walkCycle:-1,
+  jumpDirection:0,
+  momentum:0,
+  walkCycleSpeed:30
 };
 function refreshPlayer(){
   player.onload = function() {
     ctx0.clearRect(0,0,game.width,game.height);
-    console.log(playerState.walkCycle);
-    console.log(gameState.timer-playerState.walkCycle*9);
-    player.src=dogImages[gameState.timer-playerState.walkCycle*9];
-    ctx0.drawImage(player, playerState.x, playerState.y);
+
+    switch(playerState.momentum)
+    {case 'up':
+      player.src=dogJumpingImages[0];
+      ctx0.drawImage(player, playerState.x, playerState.y);
+      break;
+    case 'down':
+      player.src=dogJumpingImages[1];
+      ctx0.drawImage(player, playerState.x, playerState.y);
+      break;
+    default:
+      ctx0.drawImage(player, playerState.x, playerState.y);
+      break;}
   };
 }
 function play()
 {
   playable=true;
 }
-
 setInterval(function(){
-  gameState.timer+=1;
-  if(gameState.timer%2){
-    gameState.cycle+=1;
-  }
-  if(gameState.timer%9===0){
-    playerState.walkCycle+=1;
-  }
+  gameState.timer=Math.floor(gameState.timer+1);
   refreshPlayer();
   inputCheck();
-  gameState.score+=10;
+  if(gameState.timer%2===0)
+  {
+    gameState.cycle=Math.floor(gameState.cycle+1);
+  }
+  if(gameState.timer%playerState.walkCycleSpeed===0)
+  {
+    playerState.walkCycle=Math.floor(playerState.walkCycle+1);
+    if(playerState.walkCycle===dogImages.length)
+    {
+      playerState.walkCycle=0;
+    }
+    gameState.score+=1;
+    player.src=dogImages[playerState.walkCycle];
+  }
   if(gameState.timer>10000){
     gameState.timer=0;
-    gameState.cycle=0;}
-
-},2);
+    gameState.cycle=0;
+    playerState.walkCycle=0;}
+},4);
 
 function inputCheck(){
   if(playable===true){
     switch(playerState.jumping){
     case 99:
+      playerState.momentum=0;
       if(keyPressed===39){ //Right arrow
         ctx0.clearRect(0,0,game.width,game.height);
         playerState.x+=1;
         ctx0.drawImage(player, playerState.x, playerState.y);
-        playerState.jumpDirection=1;}
+        playerState.jumpDirection=1;
+        playerState.walkCycleSpeed=45;
+        console.log(keyPressed);
+        console.log(oldInputButton);}
       //Left arrow
       if(keyPressed===37){
         ctx0.clearRect(0,0,game.width,game.height);
         playerState.x-=1;
         ctx0.drawImage(player, playerState.x, playerState.y);
-        playerState.jumpDirection=2;}
+        playerState.jumpDirection=2;
+        playerState.walkCycleSpeed=20;}
       if(keyPressed===38){
         playerState.jumping=0;
         playerState.momentum='up';
         console.log(playerState.y);}
       break;
+    case 98:
+      playerState.y+=2;
+      playerState.jumping+=1;
+      ctx0.clearRect(0,0,game.width,game.height);
+      ctx0.drawImage(player, playerState.x, playerState.y);
+      if(keyPressed!==83){
+        keyPressed=oldInputButton;}
+      inputCheck();
+      break;
     case 49:
       playerState.momentum='down';
       playerState.jumping+=1;
+      ctx0.clearRect(0,0,game.width,game.height);
+      ctx0.drawImage(player, playerState.x, playerState.y);
       break;
     default:
       if(playerState.jumpDirection===1){
@@ -97,17 +135,19 @@ function inputCheck(){
 
       if(playerState.momentum==='down')
       {
-        ctx0.clearRect(0,0,game.width,game.height);
         playerState.y+=2;
         playerState.jumping+=1;
+        player.src=dogJumpingImages[1];
+        ctx0.clearRect(0,0,game.width,game.height);
         ctx0.drawImage(player, playerState.x, playerState.y);
         console.log(playerState.momentum);
       }
       else
       {
-        ctx0.clearRect(0,0,game.width,game.height);
         playerState.y-=2;
         playerState.jumping+=1;
+        player.src=dogJumpingImages[0];
+        ctx0.clearRect(0,0,game.width,game.height);
         ctx0.drawImage(player, playerState.x, playerState.y);
         console.log(playerState.momentum);
       }
@@ -117,10 +157,17 @@ function inputCheck(){
 
 
 function keyDown(event){
-  keyPressed=event.keyCode;
-  console.log(keyPressed);}
+  if(inputValidation===false||oldInputButton===38||event.keyCode===38)
+  { oldInputButton=keyPressed;
+    keyPressed=event.keyCode;
+    inputValidation=true;
+    console.log(keyPressed);}}
 function keyUp(){
-  keyPressed=83;}
+  keyPressed=83;
+  inputValidation=false;
+  if(playerState.jumping===99){
+    playerState.jumpDirection=0;}}
+playerState.walkCycleSpeed=30;
 window.addEventListener('keyup',keyUp);
 window.addEventListener('keydown',keyDown);
 //This should be adjusted for right/bottom side collisions
