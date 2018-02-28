@@ -5,8 +5,8 @@ var context = canvas.getContext('2d');
 
 function Frisbee() {
   this.state = {
-    x: 250,
-    y: 0
+    x: 0,
+    y: 250
   };
   this.image = new Image();
   this.image.src = 'img/fris_4.png';
@@ -24,14 +24,8 @@ Frisbee.prototype.launch = function() {
     context.drawImage(this.image, this.state.x, this.state.y, 60, 25);
     if(this.state.x < endX) { this.state.x += 5; }
     if(this.state.y > endY) { this.state.y -= 5; }
-    if(this.state.x >= endX && this.state.y <= endY) {
-      clearInterval(interval);
-    }
+    if(this.state.x >= endX && this.state.y <= endY) { clearInterval(interval); }
   }, 5);
-
-
-
-  
 };
 
 //Draws the frisbee at (x:400, y:0), slowly falls to ground
@@ -39,7 +33,6 @@ Frisbee.prototype.draw = function() {
   const ground = 400;
   this.state.x = 400;
   this.state.y = 0;
-
   var interval = setInterval(()=>{
     context.clearRect(0, 0, 900, 500);
     context.drawImage(this.image, this.state.x, this.state.y, 60, 25);
@@ -49,6 +42,5 @@ Frisbee.prototype.draw = function() {
   }, 10);
 };
 
-frisbeeObj.launch();
-//setTimeout(frisbeeObj.draw(), 5);
+//frisbeeObj.launch();
 //frisbeeObj.draw();
