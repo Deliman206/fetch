@@ -28,14 +28,14 @@ function keyDown(event){
     var keyPressed=event.keyCode;
     switch(keyPressed){
         case 39: //Right arrow
-        console.log('pressed');
+        // console.log('pressed');
             ctx0.clearRect(0,0,game.width,game.height);
             playerState.x+=10;
             ctx0.drawImage(player, playerState.x, playerState.y);
         break;
       //Left arrow
         case 37:
-        console.log('pressed');
+        // console.log('pressed');
             ctx0.clearRect(0,0,game.width,game.height);
             playerState.x-=10;
             ctx0.drawImage(player, playerState.x, playerState.y);
