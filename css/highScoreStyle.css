@@ -31,6 +31,23 @@ main {
   padding-bottom: 30px;
 }
 
+nav {
+  padding-top: 20px;
+}
+
+nav ul {
+  padding-top: 0;
+  float: left;
+}
+
+nav ul li {
+  margin-left: 230px;
+  list-style: none;
+  font-family: 'Audiowide', cursive;
+  text-align: center;
+  float: left;
+}
+
 a {
   text-decoration: none;
   font-size: 2em;

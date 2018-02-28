@@ -35,12 +35,17 @@ main img {
   border: 20px solid white;
 }
 
-footer {
-  width: calc(50% - 30px);
+nav ul {
+  padding-top: 20px;
   float: left;
-  padding-left: 450px;
-  margin-top:50px;
-  margin-bottom: 30px;
+}
+
+nav ul li {
+  margin-left: 230px;
+  list-style: none;
+  font-family: 'Audiowide', cursive;
+  text-align: center;
+  float: left;
 }
 
 a {
