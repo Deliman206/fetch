@@ -2,10 +2,10 @@
 var canvas = document.getElementById('frisbee');
 var ctx = canvas.getContext('2d');
 
-var frisbee = function(name, filePath, score) {
+var frisbee = function(name, score) {
   this.name = name;
-  this.filePath = filePath;
   this.score = score;
+  this.filePath = 'img/fris_4.png';
   this.state = {
     x: 0,
     y: 0
