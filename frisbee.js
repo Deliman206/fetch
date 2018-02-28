@@ -2,7 +2,7 @@
 var canvas = document.getElementById('frisbee');
 var context = canvas.getContext('2d');
 
-var frisbee = function(name, score) {
+function frisbee(name, score) {
   this.name = name;
   this.score = score;
   this.filePath = 'img/fris_4.png';
@@ -10,15 +10,21 @@ var frisbee = function(name, score) {
     x: 0,
     y: 0
   };
-  this.renderFrisbee();
-  this.drawFrisbee();
-};
+  this.render();
+  this.draw();
+}
 
-frisbee.prototype.renderFrisbee = function() {
+frisbee.prototype.render = function() {
   this.name = new Image(5, 5);
   this.name.src = this.filePath;
 };
 
-frisbee.prototype.drawFrisbee = function() {
-
+frisbee.prototype.draw = function(interval) {
+  setInterval(()=>{
+    context.clearRect(0,0,900,500);
+    context.drawImage(this.name, this.state.x, this.state.y);
+  },interval);
 };
+var fris = new frisbee('Frisbee', 100);
+fris.render();
+fris.draw(20);
