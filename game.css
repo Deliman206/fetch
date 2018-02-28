@@ -35,7 +35,7 @@ ul{
     z-index: 1;
 }
 #game{
-    z-index: 999;
+    z-index: 3;
     background-color: transparent;
 }
 #background2{
@@ -48,4 +48,8 @@ ul{
     border: 1px #8a8a8a groove;
     width: 300px;
     padding: 3px 0px 3px 0px;
+}
+#obstacles{
+    z-index:3;
+    background-color: transparent;
 }
