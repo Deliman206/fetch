@@ -37,6 +37,7 @@ Obstacle.prototype.drawObstacle= function(time){
 }
 var fireH = new Obstacle ('fireH', 'img/fireHydrant.png', 15);
 var mailbox = new Obstacle('mailbox', 'img/sprites/mailbox.png', 10);
+var cat = new Obstacle('cat', 'img/sprites/cat.png', 5);
 //create rand num
 //render obj on screen at rand num 
 
