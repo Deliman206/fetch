@@ -34,7 +34,10 @@ x:1000,
 y:350,
 score:0,
 timer:0,
-cycle:0
+cycle:0,
+incrementscore:function(scorevalue)
+{this.score+=scorevalue;
+renderScore(scorevalue);}
 };
 var playerState = {
 x:450,
@@ -43,7 +46,7 @@ jumping:99,
 walkCycle:-1,
 jumpDirection:0,
 momentum:0,
-walkCycleSpeed:30
+walkCycleSpeed:30,
 };
 function refreshPlayer(){
 player.onload = function() {
@@ -75,6 +78,9 @@ if(gameState.timer%2===0)
 {
 gameState.cycle=Math.floor(gameState.cycle+1);
 }
+renderScore(0);
+if(gameState.timer%2000===0)
+{gameState.incrementscore(10);}
 if(gameState.timer%playerState.walkCycleSpeed===0)
 {
 playerState.walkCycle=Math.floor(playerState.walkCycle+1);
@@ -82,7 +88,6 @@ if(playerState.walkCycle===dogImages.length)
 {
 playerState.walkCycle=0;
 }
-gameState.score+=1;
 player.src=dogImages[playerState.walkCycle];
 }
 if(gameState.timer>10000){
@@ -167,8 +172,6 @@ console.log(playerState.momentum);
 break;}
 }
 }
-
-game2.js
 
 function keyDown(event){
 if(inputValidation===false||oldInputButton===38||event.keyCode===38)
