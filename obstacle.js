@@ -37,7 +37,7 @@ Obstacle.prototype.drawObstacle= function(time){
     },time)
     return interval;
 }
-var fireH = new Obstacle ('fireH', 'img/fireHydrant.png', 15);
+var fireH = new Obstacle ('fireH', 'img/sprites/hydrant.png', 15);
 var mailbox = new Obstacle('mailbox', 'img/sprites/mailbox.png', 10);
 var cat = new Obstacle('cat','img/sprites/cat.png', 5);
 var rat = new Obstacle('rat', 'img/sprites/rat.png', 5);
