@@ -65,7 +65,7 @@ function refreshPlayer(){
   ctx0.drawImage(player, playerState.x, playerState.y);
   break;}
   };
-  }
+  
   function play()
   {
   playable=true;
