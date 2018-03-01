@@ -33,6 +33,7 @@ function handleSubmitInfo (event) {
  console.log(event.target.level.value);
  new User (newPlayerName, newLevel);
  storeUser();
+ window.location = 'index.html';
 }
 
 //localStorage check

@@ -80,29 +80,30 @@ var timerFunctionID=setInterval(function(){
   checkCollisionWithObstacle(2);
   checkCollisionWithObstacle(3);
   checkCollisionWithObstacle(4);
-  //Animation timer
-  if(gameState.timer%200===0)
-  {gameState.score+=10;
-  renderScore();
-  }
-  if(gameState.timer%2===0)
-  {
-  gameState.cycle=Math.floor(gameState.cycle+1);
-  }
-  if(gameState.timer%playerState.walkCycleSpeed===0)
-  {
-  playerState.walkCycle=Math.floor(playerState.walkCycle+1);
-  if(playerState.walkCycle===dogImages.length)
-  {
-  playerState.walkCycle=0;
-  }
-  player.src=dogImages[playerState.walkCycle];
-  }
-  if(gameState.timer>10000){
-  gameState.timer=0;
-  gameState.cycle=0;
-  playerState.walkCycle=0;}
-},4);
+  if(stopPlayer === false){
+    //Animation timer
+      if(gameState.timer%200===0){
+        gameState.score+=10;
+    // renderScore();
+      }
+      if(gameState.timer%2===0){
+        gameState.cycle=Math.floor(gameState.cycle+1);
+      }
+      if(gameState.timer%playerState.walkCycleSpeed===0){
+        playerState.walkCycle=Math.floor(playerState.walkCycle+1);
+        if(playerState.walkCycle===dogImages.length){
+          playerState.walkCycle=0;
+        }
+        player.src=dogImages[playerState.walkCycle];
+      }
+      if(gameState.timer>10000){
+        gameState.timer=0;
+        gameState.cycle=0;
+        playerState.walkCycle=0;
+      }
+    }
+  },4);
+
 
 function inputCheck(){
   if(playable===true){
@@ -239,9 +240,9 @@ function keyUp(event){
 
 //Operations
 
-window.addEventListener('keyup',keyUp);
-window.addEventListener('keydown',keyDown);
-playerState.jumping=playerState.jumptime;
-refreshPlayer();
-play();
-playerState.jumptime=149;
+// window.addEventListener('keyup',keyUp);
+// window.addEventListener('keydown',keyDown);
+// playerState.jumping=playerState.jumptime;
+// refreshPlayer();
+// play();
+// playerState.jumptime=149;

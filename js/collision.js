@@ -32,6 +32,9 @@ function checkCollisionWithObstacle(num){
     if(!condition1 && condition2){
       console.log('you lose');
       loss();
+      stopPlayer = true;
+      stopBackground = true;
+      stopObstacles =true;
     }
   }
 }
