@@ -50,3 +50,21 @@ ul{
     z-index:5;
     background-color: transparent;
 }
+#start-container{
+    position: relative;
+    width: 900;
+    height: 500;
+    z-index:10;  
+}
+#start-container img {
+    position: relative;
+    margin-left: 275px;
+    margin-top: 180px;
+    width: 350px;
+    z-index: 99;
+}
+#start-container img:hover {
+    margin-left: 270px;
+    margin-top: 178px;
+    width: 360px;
+}

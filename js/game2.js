@@ -24,7 +24,7 @@ dogImages.push('assets/Running/run_7.png');
 dogImages.push('assets/Running/run_8.png');
 dogJumpingImages.push('assets/Jumping/jump_0.png');
 dogJumpingImages.push('assets/Jumping/jump_1.png');
-var player = new Image(90,70);
+var player = new Image();
 player.src = 'assets/KKona/dogBark0.png';
 
 var gameState ={
@@ -51,6 +51,7 @@ function refreshPlayer(){
 
   switch(playerState.momentum)
   {case 'up':
+
   player.src=dogJumpingImages[0];
   ctx0.drawImage(player, playerState.x, playerState.y);
   break;
@@ -180,7 +181,7 @@ function inputCheck(){
       ctx0.drawImage(player, playerState.x, playerState.y);
     break;
   
-    default:
+      default:
       if(playerState.jumpDirection===1&&playerState.x<game.width-100){ //Determines Long Jump Right
         playerState.x+=2;
       }
@@ -244,6 +245,3 @@ playerState.jumping=playerState.jumptime;
 refreshPlayer();
 play();
 playerState.jumptime=149;
-console.log(playerState.jumptime);
-console.log(playerState.jumping);
-console.log(playerState.momentum);
