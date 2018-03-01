@@ -1,6 +1,6 @@
 'use strict';
 var frisbeeObj = new Frisbee();
-var canvas = document.getElementById('frisbee');
+var canvas = document.getElementById('obstacles');
 var context = canvas.getContext('2d');
 
 function Frisbee() {
@@ -41,6 +41,9 @@ Frisbee.prototype.draw = function() {
    if(this.state.y === ground) { clearInterval(interval); }
  }, 10);
 };
+//Conditional logic to render these in order
+// if coordinate (state.x, state.y) is at endCoordinate (400, -50) 
+//then stop moving and move down
 
-//frisbeeObj.launch();
-//frisbeeObj.draw();
+// frisbeeObj.launch();
+// frisbeeObj.draw();

@@ -1,14 +1,15 @@
 'use strict';
 var object = document.getElementById('obstacles');
 var ctx3 = object.getContext('2d');
-
+var spawnRate = 6000;
 var obstacles = [];
 function Obstacle(name, filePath, score){
     this.name = name;
     this.filePath = filePath;
-    this.score = score
+    this.score = score;
     this.states= [];
     this.offScreen = 0;
+    this.hasCollided = false;
     // this.resetState();
     this.renderImage();
     obstacles.push(this);
@@ -16,7 +17,8 @@ function Obstacle(name, filePath, score){
 Obstacle.prototype.initialState = function(){
    return {
         x : 1000,
-        y : 350,
+        y : 333,
+        scored:false,
         // Hard code width by looking at image dimentions 
     };
 }
@@ -35,8 +37,11 @@ Obstacle.prototype.drawObstacle= function(time){
     },time)
     return interval;
 }
-var fireH = new Obstacle ('fireH', 'img/fireHydrant.png', 15);
+var fireH = new Obstacle ('fireH', 'img/sprites/hydrant.png', 15);
 var mailbox = new Obstacle('mailbox', 'img/sprites/mailbox.png', 10);
+var cat = new Obstacle('cat','img/sprites/cat.png', 5);
+var rat = new Obstacle('rat', 'img/sprites/rat.png', 5);
+var bird = new Obstacle('bird', 'img/sprites/bird.png', 10);
 //create rand num
 //render obj on screen at rand num 
 
@@ -45,7 +50,6 @@ var mailbox = new Obstacle('mailbox', 'img/sprites/mailbox.png', 10);
 
 function renderRandomObstacle(){
     var randomNum = Math.floor(Math.random()*obstacles.length);
-    console.log(randomNum);
     var tempNum = randomNum;
     var interval = obstacles[tempNum].drawObstacle(5);
     setTimeout(function(){
@@ -53,8 +57,11 @@ function renderRandomObstacle(){
         obstacles[tempNum].offScreen++;
     }, 8000);// How long it takes Obstacle to cross screen
 }
+
+//operations
 (function(){
-    setInterval(renderRandomObstacle,2000)//How frequently Obstacle is generated
+
+    setInterval(renderRandomObstacle,spawnRate)//How frequently Obstacle is generated
 })();
 
 
