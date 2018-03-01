@@ -46,7 +46,7 @@ var playerState = {
 };
 
 function refreshPlayer(){
-  player.onload = function() {
+  //player.onload = function() {
   ctx0.clearRect(0,0,game.width,game.height);
 
   switch(playerState.momentum)
@@ -79,8 +79,11 @@ var timerFunctionID=setInterval(function(){
   checkCollisionWithObstacle(2);
   checkCollisionWithObstacle(3);
   checkCollisionWithObstacle(4);
-  
   //Animation timer
+  if(gameState.timer%200===0)
+  {gameState.score+=10;
+  renderScore();
+  }
   if(gameState.timer%2===0)
   {
   gameState.cycle=Math.floor(gameState.cycle+1);
@@ -91,10 +94,6 @@ var timerFunctionID=setInterval(function(){
   if(playerState.walkCycle===dogImages.length)
   {
   playerState.walkCycle=0;
-  }
-  if(gameState.timer%200===0)
-  {gameState.score+=10;
-  renderScore();
   }
   player.src=dogImages[playerState.walkCycle];
   }
