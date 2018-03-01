@@ -9,8 +9,7 @@ function checkCollisionWithObstacle(num){
     var obstacleBottom = obstacles[num].states[i].y+obstacles[num].name.height;
     var obstacleTop = obstacles[num].states[i].y;
     var condition1 =false;
-  var condition2 =false;
-  var condition3 =false;
+    var condition2 =false;
 
     if(playerRight >= obstacleLeft && playerRight <= obstacleRight ){   
       obstacles[num].states[i].hasCollided = true;
@@ -23,17 +22,18 @@ function checkCollisionWithObstacle(num){
     }
     if (condition1){
       if(obstacles[num].states[i].scored===false){
-      gameState.score+=obstacles[num].score;
-      console.log(Math.floor(gameState.score));
-      condition1=false;
-      condition2=false;
-      obstacles[num].states[i].scored=true;}
+        gameState.score+=obstacles[num].score;
+        scoreUp(obstacles[num].score);
+        console.log(Math.floor(gameState.score));
+        condition1=false;
+        condition2=false;
+        obstacles[num].states[i].scored=true;}
     }
     if(!condition1 && condition2){
-      console.log('you lose');
-      location.reload(true);
-      // playable=false;
-    }
+      loss()}
+    // playable=false;
+  }
+}
 
       // if(condition2 && condition3) {
       //   if(condition1) {
@@ -49,8 +49,8 @@ function checkCollisionWithObstacle(num){
       //     condition2 = false;
       //     condition3 = false;
       //   }
-      }
-    }
+      
+    
 
 
 // if(playerState.x+player.width-obstacles[num].states[i].x>-2 && playerState.x+player.width-obstacles[num].states[i].x<2){
