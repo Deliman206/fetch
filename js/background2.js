@@ -2,37 +2,40 @@
 var carasel2=document.getElementById('background2');
 var ctx2=carasel2.getContext('2d');
 //State variable to control Relative Position
-var backgroundState2 ={
-    x: 1200,
-    y: 150
-}
-ctx2.fillStyle='#3e94ff ';
-ctx2.fillRect(0,0,carasel2.width, carasel2.height);
-ctx2.fillStyle='#009e00 ';
-ctx2.fillRect(0,350,carasel2.width, carasel2.height/3);
+var startState2 ={
+  x: 2600,
+  y: 150
+};
+
+var tree1 = new Image(10,5);
+tree1.src = 'img/sprites/tree.png';
+var bush = new Image(10,5);
+bush.src = 'img/sprites/shrub.png';
+var lamp = new Image(10,5);
+lamp.src = 'img/sprites/lamp.png';
 var tulips = new Image(10,5);
 tulips.src = 'img/sprites/tulips.png';
 var cloud = new Image(10,5);
 cloud.src = 'img/sprites/cloud.png';
 var bench = new Image(10,5);
 bench.src = 'img/sprites/bench.png';
+var slide = new Image(10,5);
+slide.src = 'img/sprites/slide.png';
 
-function drawTree(x,y){
-    tulips.onload = function(){
-        setInterval(function(){
-            ctx2.clearRect(0,0,900,500);
-            // ctx2.drawImage(pond, backgroundState2.x+600, backgroundState2.y-100);
-            for( var i =0; i<2; i++){
-                ctx2.drawImage(tulips, backgroundState2.x + 25, backgroundState2.y+180);
-                ctx2.drawImage(cloud, backgroundState2.x + 500, backgroundState2.y-100);
-                ctx2.drawImage(bench, backgroundState2.x + 250, backgroundState2.y+130);
-                if(backgroundState2.x< -600){
-                    backgroundState2.x = 1000;
-                }
-            }
-            backgroundState2.x--;    
-        },2)
+function drawScene(){
+  setInterval(function(){
+    ctx2.clearRect(0,0,900,500);
+    ctx2.drawImage(tulips, startState2.x + 850, startState2.y +170);
+    ctx2.drawImage(bench, startState2.x + 510, startState2.y + 120);
+    ctx2.drawImage(cloud, startState2.x + 350, startState2.y - 150);
+    ctx2.drawImage(tulips, startState2.x + 650, startState2.y +170);
+    ctx2.drawImage(bush, startState2.x - 100, startState2.y +150);
+    ctx2.drawImage(lamp, startState2.x + 300, startState2.y + 20);
+    ctx2.drawImage(tree1, startState2.x + 50, startState2.y - 70);
+    startState2.x--;
+    if(startState2.x< -1300){
+      startState2.x = 950;
     }
+  },2);
 }
-
-drawTree(backgroundState2.x,backgroundState2.y);
+drawScene(startState2.x,startState2.y);
