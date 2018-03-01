@@ -31,51 +31,7 @@ function checkCollisionWithObstacle(num){
     }
     if(!condition1 && condition2){
       console.log('you lose');
-      // location.reload(true);
-      // playable=false;
+      loss();
     }
-
-      // if(condition2 && condition3) {
-      //   if(condition1) {
-      //     console.log('All conditions true');
-      //     obstacles[num].hasCollided = true;
-      //     condition1 = false;
-      //     condition2 = false;
-      //     condition3 = false;
-      //   } else {
-      //     console.log('conditions 2 and 3 true');
-      //     obstacles[num].hasCollided = true;
-      //     condition1 = false;
-      //     condition2 = false;
-      //     condition3 = false;
-      //   }
-      }
-    }
-
-
-// if(playerState.x+player.width-obstacles[num].states[i].x>-2 && playerState.x+player.width-obstacles[num].states[i].x<2){
-    //   // console.log('Collision x!');
-    //   playerState.collided=true;
-    //   setTimeout(function(){
-    //     playerState.collided=false;
-    //   },25);
-    // }
-    // if(playerState.y+player.height < obstacles[num].states[i].y && playerState.x+player.width === obstacles[num].states[i].x + obstacles[num].width){
-    //   console.log('We hit! y')
-    // }
-
-    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
-  //   if(obstacles[num].states[i].x+obstacles[num].width<playerState.x+player.width&&obstacles[num].states[i].x+obstacles[num]>playerState.x+player)
-  //   {condition1=true
-  //   console.log('condition1');};
-  //  if(obstacles[num].states[i].x<playerState.x+player.width&&obstacles[num].states[i].x>playerState.x+player.width)
-  //  {condition2=true
-  // console.log('condition2');};
-  //  if((condition1===true)||(condition2===true))
-  //   { console.log('cleared!')
-  //     if((playerState.y-+height)<(obstacles[num].states[i].y))
-  //       {
-  //         gameState.score+=obstacles[num].score
-  //         console.log(gameState.score);
-  //       }
-  //   }    
+  }
+}

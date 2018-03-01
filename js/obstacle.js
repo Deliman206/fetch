@@ -80,7 +80,6 @@ function renderRandomObstacle(){
         obstacles[tempNum].offScreen++;
     }, 8000);// How long it takes Obstacle to cross screen
 }
-
 //operations
 (function(){
     setInterval(renderRandomObstacle,spawnRate)//How frequently Obstacle is generated

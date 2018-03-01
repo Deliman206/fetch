@@ -41,7 +41,6 @@ var playerState = {
   jumpDirection:0,
   momentum:0,
   walkCycleSpeed:30,
-  collided:false,
   jumpheight:199,
   jumping:0
 };
@@ -72,18 +71,22 @@ function play(){
 }
 //player Control
 //timer ticks up every iteration of Player Interval (1ms)
-setInterval(function(){
+var timerFunctionID = setInterval(function(){
   gameState.timer=Math.floor(gameState.timer+1);
   refreshPlayer();
   inputCheck();
-  if (playerState.collided===false){
-    checkCollisionWithObstacle(0);
-    checkCollisionWithObstacle(1);
-    checkCollisionWithObstacle(2);
-    checkCollisionWithObstacle(3);
-    checkCollisionWithObstacle(4);
-  };
+  
+  checkCollisionWithObstacle(0);
+  checkCollisionWithObstacle(1);
+  checkCollisionWithObstacle(2);
+  checkCollisionWithObstacle(3);
+  checkCollisionWithObstacle(4);
+  
   //Animation timer
+  if(gameState.timer%200 === 0){
+    gameState.score += 10;
+    renderScore();
+  }
   if(gameState.timer%2===0){
     gameState.cycle=Math.floor(gameState.cycle+1);
   }
