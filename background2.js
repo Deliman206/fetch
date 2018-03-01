@@ -25,7 +25,6 @@ slide.src = 'img/sprites/slide.png';
 function drawScene(){
   setInterval(function(){
     ctx2.clearRect(0,0,900,500);
-
     ctx2.drawImage(tulips, startState2.x + 850, startState2.y +170);
     ctx2.drawImage(bench, startState2.x + 510, startState2.y + 120);
     ctx2.drawImage(cloud, startState2.x + 350, startState2.y - 150);

@@ -25,7 +25,7 @@ slide.src = 'img/sprites/slide.png';
 function drawScene(){
   setInterval(function(){
     ctx1.clearRect(0,0,900,500);
-    ctx1.fillStyle='#3e94ff';
+    ctx1.fillStyle='#00ccff';
     ctx1.fillRect(0,0,carasel.width, carasel.height);
     ctx1.fillStyle='#009e00';
     ctx1.fillRect(0,350,carasel.width, carasel.height/3);

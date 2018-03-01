@@ -6,28 +6,28 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <script src='https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.js'></script>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.6.6/processing.min.js'></script>
+        <link rel="stylesheet" type="text/css"href="game.css"/>
+        <link href="https://fonts.googleapis.com/css?family=Audiowide|Josefin+Slab|Press+Start+2P" rel="stylesheet">
         <title>Fetch!</title>
     </head>
-    <header>
-        <nav id='navbar'>
-            <ul>
-                <li class='navbar'>Level Select</li>
-                <li class='navbar'>Hi-Scores</li>
-                <li class='navbar' id='rightlink'>About Us</li>
-            </ul>
-        </nav>
-    </header>
+    <h1 class = "shadow">FETCH</h1>
     <body>
-        <link rel="stylesheet" type="text/css"href="game.css"/>
-        <div class ="container">
-            <canvas id='background' width='900' height = '500'></canvas>
-            <canvas id='background2' width='900' height = '500'></canvas>
-            <canvas id='game' width='900' height= '500'></canvas>
-            <canvas id='obstacles' width='900' height= '500'></canvas>
-        </div>
-        <script src = 'carasel.js' type='text/javascript'></script>
-        <script src = 'background2.js' type='text/javascript'></script>
-        <!-- <script src= 'game2.js' type='text/javascript'></script>
-        <script src= 'obstacle.js' type='text/javascript'></script> -->
+      <div class ="container">
+        <canvas id='background' width='900' height = '500'></canvas>
+        <canvas id='background2' width='900' height = '500'></canvas>
+        <canvas id='game' width='900' height= '500'></canvas>
+        <canvas id='obstacles' width='900' height= '500'></canvas>
+      </div>
+      <nav>
+        <ul>
+          <li><a href = "#" class = "shadow">Level Select</a></li>
+          <li><a href = "#" class = "shadow">Hi-Scores</a></li>
+          <li><a href = "#" class = "shadow">About Us</a></li>
+        </ul>
+      </nav>
+    <script src = 'background2.js' type='text/javascript'></script>
+    <script src = 'carasel.js' type='text/javascript'></script>
+    <!-- <script src= 'game2.js' type='text/javascript'></script>
+    <script src= 'obstacle.js' type='text/javascript'></script> -->
     </body>
 </html>
