@@ -1,8 +1,44 @@
 body {
   width: 1100px;
-  /* margin: auto; */
+  margin: auto;
   margin-top: 0px;
   background-color: #333;
+}
+
+header {
+  height: 90px;
+}
+
+header h1 {
+  float: left;
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 2.5em;
+  color: #ff0687;
+  margin-top: 25px;
+}
+
+nav ul {
+  padding-top: 10px;
+  display: inline-block;
+}
+
+nav ul li {
+  margin-left: 130px;
+  list-style: none;
+  font-family: 'Audiowide', cursive;
+  text-align: center;
+  float: left;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1.5em;
+}
+
+a:hover {
+  color: #ff0687;
 }
 
 .shadow {
@@ -14,11 +50,10 @@ body {
 }
 
 .container{
-    position:relative;
-    width:900px;
-    height:500px;
-    margin: auto;
+  position:relative;
+  margin-left: 60px;;
 }
+
 .container canvas{
     position: absolute;
     top:0;
@@ -44,36 +79,4 @@ body {
 #obstacles{
     z-index:4;
     background-color: transparent;
-}
-
-nav ul {
-  padding-top: 0;
-  float: left;
-}
-
-nav ul li {
-  margin-left: 200px;
-  list-style: none;
-  font-family: 'Audiowide', cursive;
-  text-align: center;
-  float: left;
-}
-
-a {
-  text-decoration: none;
-  color: #333;
-  font-size: 1.5em;
-}
-
-a:hover {
-  color: #ff0687;
-}
-
-h1 {
-  text-align: center;
-  font-family: 'Press Start 2P', cursive;
-  font-size: 2.5em;
-  color: #ff0687;
-  margin-top: 50px;
-  margin-bottom: 50px;
 }
