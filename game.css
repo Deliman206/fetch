@@ -1,0 +1,104 @@
+body {
+  width: 1100px;
+  margin: auto;
+  margin-top: 0px;
+  background-color: #333;
+}
+
+header {
+  height: 90px;
+}
+
+header h1 {
+  float: left;
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 2.5em;
+  color: #ff0687;
+  margin-top: 25px;
+}
+
+nav ul {
+  padding-top: 10px;
+  display: inline-block;
+}
+
+nav ul li {
+  margin-left: 130px;
+  list-style: none;
+  font-family: 'Audiowide', cursive;
+  text-align: center;
+  float: left;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1.5em;
+}
+
+a:hover {
+  color: #ff0687;
+}
+
+.shadow {
+  text-shadow:
+  -1px -1px 0 white,
+  1px -1px 0 white,
+  -1px 1px 0 white,
+  1px 1px 0 white;
+}
+
+.container{
+  position:relative;
+  margin-left: 60px;;
+}
+
+.container canvas{
+    position: absolute;
+    top:0;
+    left:0;
+    border-radius: 20px;
+    border: 20px solid white;
+}
+
+#background{
+    z-index: 1;
+}
+
+#game{
+    z-index: 3;
+    background-color: transparent;
+}
+
+#background2{
+    z-index: 2;
+    background-color: transparent;
+}
+
+#obstacles{
+    z-index:4;
+    background-color: transparent;
+}
+#ui{
+    z-index:5;
+    background-color: transparent;
+}
+#start-container{
+    position: relative;
+    width: 900;
+    height: 500;
+    z-index:10;  
+}
+#start-container img {
+    position: relative;
+    margin-left: 275px;
+    margin-top: 180px;
+    width: 350px;
+    z-index: 99;
+}
+#start-container img:hover {
+    margin-left: 270px;
+    margin-top: 178px;
+    width: 360px;
+}
