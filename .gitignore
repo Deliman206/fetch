@@ -1,4 +1,4 @@
-.vscode
+.vscode/
 # Compiled source #
 ###################
 *.com
@@ -29,6 +29,7 @@
 
 # OS generated files #
 ######################
+img/.DS_Store
 .DS_Store
 .DS_Store?
 ._*
