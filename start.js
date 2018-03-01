@@ -15,12 +15,34 @@ startCtx.fillRect(0, 0, startCanvas.width, startCanvas.height);
 startDiv.addEventListener('click', function(e){
   //Checks if user clicked on start button
   if(e.clientX > 296 && e.clientX < 642 && e.clientY < 409 && e.clientY > 276) {
-    if(!gameStarted) { startDiv.style.visibility = 'hidden'; }
+    if(!gameStarted) { 
+      startDiv.style.visibility = 'hidden'; 
+      loadScripts();
+    }
     console.log('div clicked');
   }
   //Start up game
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  alert('Page load');
+  alert('Game state: win/lose');
 }, false);
+
+
+function loadScripts() {
+  var script = document.createElement('script');
+  script.src = "obstacle.js";
+  document.getElementsByTagName('body')[0].appendChild(script);
+
+  script = document.createElement('script');
+  script.src = "projectile.js";
+  document.getElementsByTagName('body')[0].appendChild(script);
+
+  script = document.createElement('script');
+  script.src = "collision.js";
+  document.getElementsByTagName('body')[0].appendChild(script);
+
+  script = document.createElement('script');
+  script.src = "game2.js";
+  document.getElementsByTagName('body')[0].appendChild(script);
+}
