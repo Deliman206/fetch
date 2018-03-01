@@ -8,7 +8,7 @@ var img = document.createElement('img');
 img.setAttribute('src', 'img/start-button.png');
 startDiv.appendChild(img);
 
-startCtx.fillStyle = 'rgba(200, 200, 200, 0.75)';
+startCtx.fillStyle = 'rgba(200, 200, 200, 0.6)';
 startCtx.fillRect(0, 0, startCanvas.width, startCanvas.height);
 
 //Start button press handler
