@@ -35,7 +35,7 @@ ul{
     z-index: 1;
 }
 #game{
-    z-index: 5;
+    z-index: 3;
     background-color: transparent;
 }
 #background2{
@@ -47,6 +47,6 @@ ul{
     background-color: transparent;
 }
 #ui{
-    z-index:3;
+    z-index:5;
     background-color: transparent;
 }

@@ -34,9 +34,6 @@ y:350,
 score:0,
 timer:0,
 cycle:0,
-incrementscore:function(scorevalue)
-{this.score+=scorevalue;
-renderScore(scorevalue);}
 };
 var playerState = {
 x:450,
@@ -77,9 +74,10 @@ if(gameState.timer%2===0)
 {
 gameState.cycle=Math.floor(gameState.cycle+1);
 }
-renderScore(0);
-if(gameState.timer%2000===0)
-{gameState.incrementscore(10);}
+if(gameState.timer%1000===0)
+  {gameState.score+=1;
+    scoreUp(1);
+    renderScore();}
 if(gameState.timer%playerState.walkCycleSpeed===0)
 {
 playerState.walkCycle=Math.floor(playerState.walkCycle+1);
