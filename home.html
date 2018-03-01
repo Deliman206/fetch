@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width", initial-scale="1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>Fetch Home</title>
+ <link rel="stylesheet" type="text/css" href="home.css">
+ <link href="https://fonts.googleapis.com/css?family=Audiowide|Josefin+Slab|Press+Start+2P" rel="stylesheet">
+</head>
+<body>
+ <h1 class = "shadow">Play FETCH</h1>
+ <form id = "submitInfo">
+   <fieldset>
+     <label for = "name">Name: </label>
+     
+     <input name = "name" type = "text" size = "20" id = "name"/><br>
+     <legend>Name and Select Level</legend>
+
+     <label id = "levelChoices">Level: </label>
+
+     <input type = "radio" name="level" value="1">
+     <label for = "one"> Easy </label>
+     
+     <input type = "radio" name="level" value="2">
+     <label for = "two">Medium</label>
+     
+     <input type = "radio" name="level" value="3">
+     <label for = "three">Hard</label><br>
+
+     <button type = "submit">Add</button>
+   </fieldset>
+ </form>
+ <nav>
+   <ul>
+     <li><a href = "#" class = "shadow">high scores</a></li>
+     <li><a href = "#" class = "shadow">about us</a></li>
+   </ul>
+ </nav>
+ <script src="home.js"></script>    
+</body>
+</html>
