@@ -23,18 +23,18 @@ startDiv.addEventListener('click', function(e){
 //Loads js files fundament to game logic/states
 function loadScripts() {
   var script = document.createElement('script');
-  script.src = "obstacle.js";
+  script.src = "js/obstacle.js";
   document.getElementsByTagName('body')[0].appendChild(script);
 
   script = document.createElement('script');
-  script.src = "projectile.js";
+  script.src = "js/projectile.js";
   document.getElementsByTagName('body')[0].appendChild(script);
 
   script = document.createElement('script');
-  script.src = "collision.js";
+  script.src = "js/collision.js";
   document.getElementsByTagName('body')[0].appendChild(script);
 
   script = document.createElement('script');
-  script.src = "game2.js";
+  script.src = "js/game2.js";
   document.getElementsByTagName('body')[0].appendChild(script);
 }
