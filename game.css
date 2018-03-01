@@ -46,6 +46,10 @@ ul{
     z-index:4;
     background-color: transparent;
 }
+#ui{
+    z-index:5;
+    background-color: transparent;
+}
 #start-container{
     position: relative;
     width: 900;

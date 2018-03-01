@@ -36,6 +36,7 @@ function drawTree(x,y){
                 }
             }
             backgroundState.x--;    
+
         },1)
     }
 }

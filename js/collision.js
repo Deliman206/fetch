@@ -9,9 +9,7 @@ function checkCollisionWithObstacle(num){
     var obstacleBottom = obstacles[num].states[i].y+obstacles[num].name.height;
     var obstacleTop = obstacles[num].states[i].y;
     var condition1 =false;
-  var condition2 =false;
-  var condition3 =false;
-
+    var condition2 =false;
     if(playerRight >= obstacleLeft && playerRight <= obstacleRight ){   
       obstacles[num].states[i].hasCollided = true;
       condition2 = true;
@@ -23,7 +21,9 @@ function checkCollisionWithObstacle(num){
     }
     if (condition1){
       if(obstacles[num].states[i].scored===false){
+
       gameState.score+=obstacles[num].score;
+      scoreUp(obstacles[num].score);
       console.log(Math.floor(gameState.score));
       condition1=false;
       condition2=false;

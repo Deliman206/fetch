@@ -3,7 +3,6 @@ var ctx3 = document.getElementById('obstacles').getContext('2d');
 var ctxP = document.getElementById('obstacles').getContext('2d');
 var spawnRate = 6000;
 var obstacles = [];
-
 function Obstacle(name, filePath, score){
     this.name = name;
     this.filePath = filePath;
