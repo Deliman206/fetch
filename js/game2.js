@@ -24,7 +24,7 @@ dogImages.push('assets/Running/run_7.png');
 dogImages.push('assets/Running/run_8.png');
 dogJumpingImages.push('assets/Jumping/jump_0.png');
 dogJumpingImages.push('assets/Jumping/jump_1.png');
-var player = new Image(90,70);
+var player = new Image();
 player.src = 'assets/KKona/dogBark0.png';
 
 var gameState ={
@@ -42,16 +42,16 @@ var playerState = {
   momentum:0,
   walkCycleSpeed:30,
   collided:false,
-  jumpheight:149,
+  jumpheight:199,
   jumping:0
 };
 
 function refreshPlayer(){
-  player.onload = function() {
+  // player.onload = function() {
   ctx0.clearRect(0,0,game.width,game.height);
 
-  switch(playerState.momentum)
-  {case 'up':
+  switch(playerState.momentum){
+  case 'up':
   player.src=dogJumpingImages[0];
   ctx0.drawImage(player, playerState.x, playerState.y);
   break;
@@ -63,45 +63,44 @@ function refreshPlayer(){
   
   default:
   ctx0.drawImage(player, playerState.x, playerState.y);
-  break;}
-  };
+  break;
   }
-  function play()
-  {
+}
+  // }
+function play(){
   playable=true;
 }
+//player Control
+//timer ticks up every iteration of Player Interval (1ms)
 setInterval(function(){
   gameState.timer=Math.floor(gameState.timer+1);
   refreshPlayer();
   inputCheck();
- if (playerState.collided===false){
-  checkCollisionWithObstacle(0);
-  checkCollisionWithObstacle(1);
-  checkCollisionWithObstacle(2);
-  checkCollisionWithObstacle(3);
-  checkCollisionWithObstacle(4);
-};
-  
+  if (playerState.collided===false){
+    checkCollisionWithObstacle(0);
+    checkCollisionWithObstacle(1);
+    checkCollisionWithObstacle(2);
+    checkCollisionWithObstacle(3);
+    checkCollisionWithObstacle(4);
+  };
   //Animation timer
-  if(gameState.timer%2===0)
-  {
-  gameState.cycle=Math.floor(gameState.cycle+1);
+  if(gameState.timer%2===0){
+    gameState.cycle=Math.floor(gameState.cycle+1);
   }
-  if(gameState.timer%playerState.walkCycleSpeed===0)
-  {
-  playerState.walkCycle=Math.floor(playerState.walkCycle+1);
-  if(playerState.walkCycle===dogImages.length)
-  {
-  playerState.walkCycle=0;
-  }
-  gameState.score+=.1;
-  player.src=dogImages[playerState.walkCycle];
+  if(gameState.timer%playerState.walkCycleSpeed===0){
+    playerState.walkCycle=Math.floor(playerState.walkCycle+1);
+    if(playerState.walkCycle===dogImages.length){
+      playerState.walkCycle=0;
+    }
+    gameState.score+=.1;
+    player.src=dogImages[playerState.walkCycle];
   }
   if(gameState.timer>10000){
   gameState.timer=0;
   gameState.cycle=0;
-  playerState.walkCycle=0;}
-},4);
+  playerState.walkCycle=0;
+  }
+},1);
 
 function inputCheck(){
   if(playable===true){
@@ -110,7 +109,7 @@ function inputCheck(){
       playerState.momentum=0;
       if(keyPressed===39){ //Right arrow
         ctx0.clearRect(0,0,game.width,game.height);
-        playerState.x+=2;
+        playerState.x+=3;
         ctx0.drawImage(player, playerState.x, playerState.y);
         playerState.jumpDirection=1; //aspect to determine super jump
         playerState.walkCycleSpeed=45; //controls how often we transform player to show walking

@@ -46,3 +46,7 @@ ul{
     z-index:4;
     background-color: transparent;
 }
+#projectile{
+    z-index:5;
+    background-color: transparent;
+}

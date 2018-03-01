@@ -31,7 +31,7 @@ function checkCollisionWithObstacle(num){
     }
     if(!condition1 && condition2){
       console.log('you lose');
-      location.reload(true);
+      // location.reload(true);
       // playable=false;
     }
 
