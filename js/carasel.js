@@ -33,13 +33,13 @@ function drawScene(){
     ctx1.drawImage(bench, startState.x + 710, startState.y + 120);
     ctx1.drawImage(cloud, startState.x + 900, startState.y - 150);
     ctx1.drawImage(tulips, startState.x + 650, startState.y +170);
+    ctx1.drawImage(tulips, startState.x + 50, startState.y +170);
     ctx1.drawImage(bush, startState.x + 950, startState.y +150);
     ctx1.drawImage(bush, startState.x + 250, startState.y +150);
     ctx1.drawImage(lamp, startState.x + 400, startState.y + 20);
     ctx1.drawImage(slide, startState.x + 1100, startState.y + 60);
+    ctx1.drawImage(tree1, startState.x, startState.y - 70);
     startState.x--;
-    ctx1.drawImage(tulips, startState.x + -100, startState.y +170);
-    ctx1.drawImage(tree1, startState.x -80, startState.y - 70);
     if(startState.x< -1300){
       startState.x = 950;
     }

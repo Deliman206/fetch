@@ -102,3 +102,7 @@ a:hover {
     margin-top: 178px;
     width: 360px;
 }
+#cannon{
+  z-index:6;
+  background-color: transparent;
+}
