@@ -23,7 +23,7 @@ function handleSubmitInfo (event) {
  console.log(event.target.level.value);
  currentUser= new User(newPlayerName,newLevel);
  storeUser();
- window.location = 'index.html';
+ window.location = 'game.html';
 }
 //event listener
 submitInfo.addEventListener('submit', handleSubmitInfo);

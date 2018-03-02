@@ -35,7 +35,7 @@ var gameState ={
   cycle:0
 };
 var playerState = {
-  x:0,
+  x:150,
   y:333,
   walkCycle:-1,
   jumpDirection:0,
@@ -208,7 +208,7 @@ function loss()
 {
   clearInterval(timerFunctionID);
   playable=false;
-  setTimeout(function(){window.location.href= 'home.html';},500)
+  setTimeout(function(){window.location.href= 'index.html';},500)
 }
 function keyDown(event){
   //input validation reduces lag
