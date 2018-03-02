@@ -2,6 +2,7 @@
 
 var cannon = document.getElementById('cannon');
 var ctxCannon = cannon.getContext('2d');
+var cannonSound = new Audio('sounds/cannon.mp3');
 
 var cannonImages = new Array;
 for (var i = 0; i < 11; i++) {
@@ -27,6 +28,7 @@ function cannonLaunch() {
     i++;
     if (i=== 3){
       projectile.drawDisk();
+      setTimeout(cannonSound.play(), 20);
     }
     if (i === cannonImages.length) {
       clearInterval(cannonLaunch);

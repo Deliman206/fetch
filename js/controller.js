@@ -1,8 +1,14 @@
+var birdsLoop = new Audio('sounds/birds.mp3');
+birdsLoop.loop = true;
+birdsLoop.play();
+
 var stopBackground = false;
 var stopPlayer = false;
 var stopObstacles = false;
 var continuePlay;
 var stopProjectile = false;
+var currentUser=JSON.parse(localStorage.getItem('currentuser'));
+localStorage.removeItem('currentuser');
 
 var playerRight = playerState.x+player.width;
 var playerBottom = playerState.y+player.height;
@@ -38,7 +44,7 @@ function loadGame(){
     allowScoring();
   }},5)
 }
-function win(){
+function win(){playerState.score+=50;
   clearInterval(timerFunctionID);
   playable=false;
   console.log('you win')
@@ -47,7 +53,10 @@ function win(){
   stopPlayer = true;
   stopObstacles = true;
   stopProjectile = true;
-  setTimeout(function(){location.reload(true);},1000)
+  currentUser.score=playerState.score;
+  console.log(currentUser);
+  localStorage.setItem('currentuser',JSON.stringify(currentUser))
+  setTimeout(function(){window.location.href = 'highscore.html'},1000);
 }
 function allowScoring(){
   continuePlay=setInterval(function(){

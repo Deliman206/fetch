@@ -4,6 +4,8 @@ var ctxP = document.getElementById('projectile').getContext('2d');
 var spawnRate = 6000;
 var frisbeeTimer = 0;
 var obstacles = [];
+var currentUser=JSON.parse(localStorage.getItem('currentuser'));
+var levelDiff = currentUser.level;
 function Obstacle(name, filePath, score){
     this.name = name;
     this.filePath = filePath;
@@ -60,7 +62,7 @@ Frisbee.prototype.draw = function() {
     var intervalDrop = setInterval(()=>{
       ctxP.clearRect(this.startState.x, this.startState.y, this.image.width ,this.image.height);
       ctxP.drawImage(this.image, this.startState.x, this.startState.y);
-      this.startState.y += 1;
+      this.startState.y += 1/(3*levelDiff);
       //If frisbee has hit the ground = stop execution
       if(this.startState.y >= ground) { clearInterval(intervalDrop); }
       if(stopProjectile === true){

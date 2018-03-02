@@ -208,7 +208,7 @@ function loss()
 {
   clearInterval(timerFunctionID);
   playable=false;
-  setTimeout(function(){location.reload(true);},1000)
+  setTimeout(function(){window.location.href= 'home.html';},500)
 }
 function keyDown(event){
   //input validation reduces lag
