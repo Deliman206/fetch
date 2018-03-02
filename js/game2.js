@@ -48,7 +48,7 @@ var playerState = {
 function refreshPlayer(){
   //player.onload = function() {
   ctx0.clearRect(0,0,game.width,game.height);
-
+  console.log(player.src);
   switch(playerState.momentum)
   {case 'up':
 
@@ -101,6 +101,7 @@ var timerFunctionID=setInterval(function(){
   gameState.timer=0;
   gameState.cycle=0;
   playerState.walkCycle=0;}
+  refreshPlayer();
 },4);
 
 function inputCheck(){
@@ -119,7 +120,7 @@ function inputCheck(){
           playerState.x+=2;
           ctx0.drawImage(player, playerState.x, playerState.y);
           playerState.jumpDirection=1; //aspect to determine super jump
-          playerState.walkCycleSpeed=45; //controls how often we transform player to show walking
+          playerState.walkCycleSpeed=20; //controls how often we transform player to show walking
         // keyHeldRight=39; // Allows user to move after superjump in flow
         playerState.jumptime=149;
         }else{keyPressed=83;}
@@ -131,7 +132,7 @@ function inputCheck(){
         playerState.x-=3;
         ctx0.drawImage(player, playerState.x, playerState.y);
         playerState.jumpDirection=2;
-        playerState.walkCycleSpeed=20;
+        playerState.walkCycleSpeed=45;
         playerState.jumptime=149;}
         else{keyPressed=83;}
         // keyHeldLeft=37; // Allows user to move after superjump in flow
@@ -169,7 +170,7 @@ function inputCheck(){
       //   keyPressed=83;
       // playerState.jumpDirection=0;
       // }
-    break;
+      break;
   
     case Math.floor(playerState.jumptime/2): //Maximum Jump Height
       playerState.momentum='down'; // Trigger to cause fall
@@ -177,9 +178,9 @@ function inputCheck(){
       player.src=dogJumpingImages[1];
       ctx0.clearRect(0,0,game.width,game.height);
       ctx0.drawImage(player, playerState.x, playerState.y);
-    break;
+      break;
   
-      default:
+    default:
       if(playerState.jumpDirection===1&&playerState.x<game.width-100){ //Determines Long Jump Right
         playerState.x+=2;
       }
@@ -237,9 +238,9 @@ function keyUp(event){
 
 //Operations
 
-//window.addEventListener('keyup',keyUp);
-//window.addEventListener('keydown',keyDown);
+window.addEventListener('keyup',keyUp);
+window.addEventListener('keydown',keyDown);
 //playerState.jumping=playerState.jumptime;
-//refreshPlayer();
+refreshPlayer();
 //play();
-//playerState.jumptime=149;
+playerState.jumptime=149;
