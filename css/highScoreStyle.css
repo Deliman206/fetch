@@ -29,14 +29,24 @@ main {
   color: white;
   padding-top: 30px;
   padding-bottom: 30px;
+  overflow: hidden;
 }
 
-footer {
-  width: calc(50% - 30px);
+nav {
+  padding-top: 20px;
+}
+
+nav ul {
+  padding-top: 0;
   float: left;
-  padding-left: 450px;
-  margin-top:50px;
-  margin-bottom: 30px;
+}
+
+nav ul li {
+  margin-left: 230px;
+  list-style: none;
+  font-family: 'Audiowide', cursive;
+  text-align: center;
+  float: left;
 }
 
 a {
