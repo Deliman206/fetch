@@ -67,7 +67,7 @@ a:hover {
 }
 
 #game{
-    z-index: 399;
+    z-index: 4;
     background-color: transparent;
 }
 
@@ -77,11 +77,11 @@ a:hover {
 }
 
 #obstacles{
-    z-index:4;
+    z-index:6;
     background-color: transparent;
 }
 #ui{
-    z-index:6;
+    z-index:7;
     background-color: transparent;
 }
 #projectile{
@@ -107,6 +107,6 @@ a:hover {
     width: 360px;
 }
 #cannon{
-  z-index:6;
+  z-index:3;
   background-color: transparent;
 }

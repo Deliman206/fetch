@@ -5,6 +5,8 @@ var spawnRate = 6000;
 var frisbeeTimer = 0;
 var obstacles = [];
 var currentUser=JSON.parse(localStorage.getItem('currentuser'));
+if(currentUser.level==='')
+{currentUser.level='1';}
 var levelDiff = currentUser.level;
 function Obstacle(name, filePath, score){
     this.name = name;

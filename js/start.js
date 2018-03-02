@@ -21,6 +21,12 @@ startDiv.addEventListener('click', function(e){
     loadGame();
   }
 });
+window.addEventListener('keydown',function(event){
+  if(event.keyCode===13){
+    startDiv.style.visibility = 'hidden'; 
+    loadGame();}
+});
+
 //Draw Background
 drawScene1(startState.x,startState.y);
 drawScene2(startState2.x,startState2.y);

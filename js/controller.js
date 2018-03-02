@@ -8,8 +8,9 @@ var continuePlay;
 var stopProjectile = false;
 var currentUser=JSON.parse(localStorage.getItem('currentuser'));
 localStorage.removeItem('currentuser');
-if(currentUser.level==="")
-{currentUser.level=1;
+console.log(currentUser);
+if(currentUser.level==='')
+{currentUser.level='1';
 console.log('numchump');}
 if(currentUser.name==='')
 {currentUser.name='chump';}

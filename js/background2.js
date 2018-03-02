@@ -39,6 +39,6 @@ function drawScene2(){
       // ctx2.clearRect(0,0,900,500);
       clearInterval(background2Interval);
     }
-  },2);
+  },2.0359375);
 }
 // drawScene2(startState2.x,startState2.y);

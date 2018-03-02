@@ -237,9 +237,9 @@ function keyUp(event){
 
 //Operations
 
-window.addEventListener('keyup',keyUp);
-window.addEventListener('keydown',keyDown);
-playerState.jumping=playerState.jumptime;
-refreshPlayer();
-play();
-playerState.jumptime=149;
+//window.addEventListener('keyup',keyUp);
+//window.addEventListener('keydown',keyDown);
+//playerState.jumping=playerState.jumptime;
+//refreshPlayer();
+//play();
+//playerState.jumptime=149;
