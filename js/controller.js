@@ -60,7 +60,7 @@ function win(){gameState.score+=50;
   currentUser.score=gameState.score;
   console.log(currentUser);
   localStorage.setItem('currentuser',JSON.stringify(currentUser))
-  setTimeout(function(){window.location.href = 'highScore.html'},1000);
+  setTimeout(function(){window.location.href = 'highscore.html'},1000);
 }
 function allowScoring(){
   continuePlay=setInterval(function(){
