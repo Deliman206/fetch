@@ -12,7 +12,6 @@ function loadGame(){
   stopPlayer= true;
   setInterval(renderRandomObstacle,spawnRate)//How frequently Obstacle is generated
   cannonLaunch();
-  
   //Define Projectile Box
 var projectileRight = projectile.startState.x+projectile.width;
 var projectileBottom = projectile.startState.y+projectile.height;

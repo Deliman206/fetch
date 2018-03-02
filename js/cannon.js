@@ -23,6 +23,9 @@ function cannonLaunch() {
     ctxCannon.clearRect(0,0,900,500);
     ctxCannon.drawImage(cannonImages[i], 20, 40);
     i++;
+    if (i=== 3){
+      projectile.drawDisk();
+    }
     if (i === cannonImages.length) {
       clearInterval(cannonLaunch);
       cannonDie();
