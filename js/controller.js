@@ -1,7 +1,6 @@
 var birdsLoop = new Audio('sounds/birds.mp3');
 birdsLoop.loop = true;
 birdsLoop.play();
-
 var stopBackground = false;
 var stopPlayer = false;
 var stopObstacles = false;
@@ -9,7 +8,11 @@ var continuePlay;
 var stopProjectile = false;
 var currentUser=JSON.parse(localStorage.getItem('currentuser'));
 localStorage.removeItem('currentuser');
-
+if(currentUser.level==="")
+{currentUser.level=1;
+console.log('numchump');}
+if(currentUser.name==='')
+{currentUser.name='chump';}
 var playerRight = playerState.x+player.width;
 var playerBottom = playerState.y+player.height;
 var playerTop = playerState.y;

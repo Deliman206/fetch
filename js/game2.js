@@ -35,7 +35,7 @@ var gameState ={
   cycle:0
 };
 var playerState = {
-  x:450,
+  x:0,
   y:333,
   walkCycle:-1,
   jumpDirection:0,
