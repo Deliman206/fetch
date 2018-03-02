@@ -1,6 +1,6 @@
 'use strict';
 var ctx3 = document.getElementById('obstacles').getContext('2d');
-var ctxP = document.getElementById('obstacles').getContext('2d');
+var ctxP = document.getElementById('projectile').getContext('2d');
 var spawnRate = 6000;
 var frisbeeTimer = 0;
 var obstacles = [];
@@ -24,10 +24,10 @@ function Frisbee() {
       x : 800,
       y : 0
     };
-     this.slowState = {
-       x : 400,
-       y : 30
-     };
+    //  this.slowState = {
+    //    x : 400,
+    //    y : 30
+    //  };
    this.image = new Image();
    this.image.src = 'img/fris_4.png';
 }
@@ -55,17 +55,25 @@ Obstacle.prototype.drawObstacle= function(time){
     },time)
     return interval;
 }
+Frisbee.prototype.draw = function() {
+    const ground = 400;
+    var intervalDrop = setInterval(()=>{
+      ctxP.clearRect(this.startState.x, this.startState.y, this.image.width ,this.image.height);
+      ctxP.drawImage(this.image, this.startState.x, this.startState.y, 60, 25);
+      this.startState.y += 1;
+      //If frisbee has hit the ground = stop execution
+      if(this.startState.y >= ground) { clearInterval(intervalDrop); }
+    }, 10);
+   };
 Frisbee.prototype.drawDisk = function() {
  var interval = setInterval(()=>{
     frisbeeTimer++;
     
    ctxP.clearRect(this.startState.x, this.startState.y, this.image.width ,this.image.height);
    ctxP.drawImage(this.image, this.startState.x, this.startState.y, 60, 25);
-   if(this.startState.x < this.slowState.x) { this.startState.x += 2;}
-   if(this.startState.y > this.slowState.y) { this.startState.y -= 5/8; }
-   if(this.startState.x > this.slowState.x) { this.startState.x += .2; }
-   if(this.startState.y < this.slowState.y) { this.startState.y -= 5/80; }
-   if(this.startState.x >= this.endState.x && this.startState.y <= this.endState.y) { clearInterval(interval);  }//this.draw();
+   if(this.startState.x < this.endState.x) { this.startState.x += 2;}
+   if(this.startState.y > this.endState.y) { this.startState.y -= 5/8; }
+   if(this.startState.x >= this.endState.x && this.startState.y <= this.endState.y) { clearInterval(interval); this.draw(); }
  }, 5);
 };
 var projectile = new Frisbee();

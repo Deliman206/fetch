@@ -81,6 +81,10 @@ a:hover {
     background-color: transparent;
 }
 #ui{
+    z-index:6;
+    background-color: transparent;
+}
+#projectile{
     z-index:5;
     background-color: transparent;
 }

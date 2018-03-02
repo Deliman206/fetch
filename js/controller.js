@@ -1,6 +1,12 @@
 var stopBackground = false;
 var stopPlayer = false;
 var stopObstacles = false;
+
+var playerRight = playerState.x+player.width;
+var playerBottom = playerState.y+player.height;
+var playerTop = playerState.y;
+var playerLeft = playerState.x;
+
 function loadGame(){
   stopBackground= true;
   stopPlayer= true;
@@ -8,6 +14,11 @@ function loadGame(){
   //Draw Cannon
   
   projectile.drawDisk();
+  //Define Projectile Box
+var projectileRight = projectile.startState.x+projectile.width;
+var projectileBottom = projectile.startState.y+projectile.height;
+var projectileTop = projectile.startState.y;
+var projectileLeft = projectile.startState.x;
   //When to start the game
   console.log(frisbeeTimer);
   var interval = setInterval(function(){
@@ -25,6 +36,10 @@ function loadGame(){
     playerState.jumptime=149;
     //Start scoring!
     // renderScore();
+    console.log(projectileBottom);
+    if(playerTop <= projectileBottom ){ //|| playerBottom >= projectileTop
+      console.log('you win');
+    }
     clearInterval(interval);
   }
 },5)
