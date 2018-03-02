@@ -14,27 +14,12 @@ startCtx.fillRect(0, 0, startCanvas.width, startCanvas.height);
 //Start button press handler
 startDiv.addEventListener('click', function(e){
   //Checks if user clicked on start button
+  //Reposition at later point
   if(e.clientX > 296 && e.clientX < 642 && e.clientY < 409 && e.clientY > 276) {
     startDiv.style.visibility = 'hidden'; 
-    loadScripts();
+    loadGame();
   }
 });
-
-//Loads js files fundament to game logic/states
-function loadScripts() {
-  var script = document.createElement('script');
-  script.src = "obstacle.js";
-  document.getElementsByTagName('body')[0].appendChild(script);
-
-  script = document.createElement('script');
-  script.src = "projectile.js";
-  document.getElementsByTagName('body')[0].appendChild(script);
-
-  script = document.createElement('script');
-  script.src = "collision.js";
-  document.getElementsByTagName('body')[0].appendChild(script);
-
-  script = document.createElement('script');
-  script.src = "game2.js";
-  document.getElementsByTagName('body')[0].appendChild(script);
-}
+//Draw Background
+drawScene1(startState.x,startState.y);
+drawScene2(startState2.x,startState2.y);

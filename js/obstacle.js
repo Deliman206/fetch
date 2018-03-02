@@ -1,7 +1,9 @@
 'use strict';
 var ctx3 = document.getElementById('obstacles').getContext('2d');
 var ctxP = document.getElementById('obstacles').getContext('2d');
+var 
 var spawnRate = 6000;
+var frisbeeTimer = 0;
 var obstacles = [];
 function Obstacle(name, filePath, score){
     this.name = name;
@@ -48,15 +50,19 @@ Obstacle.prototype.drawObstacle= function(time){
         setInterval(()=>{
         ctx3.clearRect(this.states[i].x,this.states[i].y,this.name.width+2,this.name.height);
         ctx3.drawImage(this.name, this.states[i].x, this.states[i].y);
-        this.states[i].x-=1.5;    
+        if(stopObstacles === false){
+            this.states[i].x-=1.5;
+        }
     },time)
     return interval;
 }
 Frisbee.prototype.drawDisk = function() {
  var interval = setInterval(()=>{
+    frisbeeTimer++;
+    
    ctxP.clearRect(this.startState.x, this.startState.y, this.image.width ,this.image.height);
    ctxP.drawImage(this.image, this.startState.x, this.startState.y, 60, 25);
-   if(this.startState.x < this.slowState.x) { this.startState.x += 2; }
+   if(this.startState.x < this.slowState.x) { this.startState.x += 2;}
    if(this.startState.y > this.slowState.y) { this.startState.y -= 5/8; }
    if(this.startState.x > this.slowState.x) { this.startState.x += .2; }
    if(this.startState.y < this.slowState.y) { this.startState.y -= 5/80; }
@@ -80,7 +86,7 @@ function renderRandomObstacle(){
     }, 8000);// How long it takes Obstacle to cross screen
 }
 //operations
-(function(){
-    setInterval(renderRandomObstacle,spawnRate)//How frequently Obstacle is generated
-})();
-projectile.drawDisk();
+// (function(){
+//     setInterval(renderRandomObstacle,spawnRate)//How frequently Obstacle is generated
+// })();
+// projectile.drawDisk();
