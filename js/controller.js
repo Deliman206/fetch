@@ -1,6 +1,8 @@
 var stopBackground = false;
 var stopPlayer = false;
 var stopObstacles = false;
+var continuePlay;
+var stopProjectile = false;
 
 var playerRight = playerState.x+player.width;
 var playerBottom = playerState.y+player.height;
@@ -13,12 +15,11 @@ function loadGame(){
   setInterval(renderRandomObstacle,spawnRate)//How frequently Obstacle is generated
   cannonLaunch();
   //Define Projectile Box
-var projectileRight = projectile.startState.x+projectile.width;
-var projectileBottom = projectile.startState.y+projectile.height;
-var projectileTop = projectile.startState.y;
-var projectileLeft = projectile.startState.x;
+  var projectileRight = projectile.startState.x+projectile.image.width;
+  var projectileBottom = projectile.startState.y+projectile.image.height;
+  var projectileTop = projectile.startState.y;
+  var projectileLeft = projectile.startState.x;
   //When to start the game
-  console.log(frisbeeTimer);
   var interval = setInterval(function(){
   if (frisbeeTimer > 100){
     stopBackground = false;
@@ -28,18 +29,40 @@ var projectileLeft = projectile.startState.x;
     //When to activate Player
     window.addEventListener('keyup',keyUp);
     window.addEventListener('keydown',keyDown);
+    playerState.jumptime=149;
     playerState.jumping=playerState.jumptime;
     refreshPlayer();
+    renderScore();
     play();
-    playerState.jumptime=149;
-    //Start scoring!
-    // renderScore();
-    console.log(projectileBottom);
-    if(playerTop <= projectileBottom ){ //|| playerBottom >= projectileTop
-      console.log('you win');
-    }
     clearInterval(interval);
-  }
-},5)
+    allowScoring();
+  }},5)
 }
-
+function win(){
+  clearInterval(timerFunctionID);
+  playable=false;
+  console.log('you win')
+  clearInterval(continuePlay);
+  stopBackground = true;
+  stopPlayer = true;
+  stopObstacles = true;
+  stopProjectile = true;
+  setTimeout(function(){location.reload(true);},1000)
+}
+function allowScoring(){
+  continuePlay=setInterval(function(){
+    projectileRight = projectile.startState.x+projectile.image.width;
+    projectileBottom = projectile.startState.y+projectile.image.height;
+    projectileTop = projectile.startState.y;
+    projectileLeft = projectile.startState.x;
+    playerRight = playerState.x+player.width;
+    playerBottom = playerState.y+player.height;
+    playerTop = playerState.y;
+    playerLeft = playerState.x;
+    if(playerTop <= projectileBottom && playerBottom >= projectileTop){
+      console.log('got 1 condition')
+      if(projectileLeft >= playerLeft && projectileLeft <= playerRight){win();}
+      if(projectileRight>playerLeft && projectileRight<playerRight){win();}
+    }
+  },5);
+}

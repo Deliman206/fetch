@@ -29,8 +29,6 @@ function handleSubmitInfo (event) {
  event.preventDefault();
  var newPlayerName = event.target.name.value;
  var newLevel = event.target.level.value;
- console.log(event.target.name.value);
- console.log(event.target.level.value);
  new User (newPlayerName, newLevel);
  storeUser();
  window.location = 'index.html';

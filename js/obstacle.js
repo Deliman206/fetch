@@ -22,7 +22,7 @@ function Frisbee() {
     }; 
     this.endState = {
       x : 800,
-      y : 0
+      y : 110
     };
     //  this.slowState = {
     //    x : 400,
@@ -56,13 +56,16 @@ Obstacle.prototype.drawObstacle= function(time){
     return interval;
 }
 Frisbee.prototype.draw = function() {
-    const ground = 400;
+    const ground = 350;
     var intervalDrop = setInterval(()=>{
       ctxP.clearRect(this.startState.x, this.startState.y, this.image.width ,this.image.height);
-      ctxP.drawImage(this.image, this.startState.x, this.startState.y, 60, 25);
+      ctxP.drawImage(this.image, this.startState.x, this.startState.y);
       this.startState.y += 1;
       //If frisbee has hit the ground = stop execution
       if(this.startState.y >= ground) { clearInterval(intervalDrop); }
+      if(stopProjectile === true){
+        clearInterval(intervalDrop);
+      }
     }, 10);
    };
 Frisbee.prototype.drawDisk = function() {
@@ -70,11 +73,14 @@ Frisbee.prototype.drawDisk = function() {
     frisbeeTimer++;
     
    ctxP.clearRect(this.startState.x, this.startState.y, this.image.width ,this.image.height);
-   ctxP.drawImage(this.image, this.startState.x, this.startState.y, 60, 25);
+   ctxP.drawImage(this.image, this.startState.x, this.startState.y);
    if(this.startState.x < this.endState.x) { this.startState.x += 1;}
    if(this.startState.y > this.endState.y) { this.startState.y -= 5/16; }
    if(this.startState.x >= this.endState.x && this.startState.y <= this.endState.y) { clearInterval(interval); this.draw(); }
- }, 5);
+   if(stopProjectile === true){
+    clearInterval(interval);
+  }
+}, 5);
 };
 var projectile = new Frisbee();
 var fireH = new Obstacle ('fireH', 'img/sprites/hydrant.png', 15);

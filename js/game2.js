@@ -73,7 +73,6 @@ function refreshPlayer(){
 //This sets timerFunctionID to a piece of data which can be used to end the interval, as seen in function loss.
 var timerFunctionID=setInterval(function(){
   gameState.timer=Math.floor(gameState.timer+1);
-  refreshPlayer();
   inputCheck();
   checkCollisionWithObstacle(0);
   checkCollisionWithObstacle(1);
@@ -125,7 +124,6 @@ function inputCheck(){
         // keyHeldRight=39; // Allows user to move after superjump in flow
         playerState.jumptime=149;
         }else{keyPressed=83;}
-
       }
   //Left arrow
       if(keyPressed===37){

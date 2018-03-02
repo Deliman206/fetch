@@ -27,7 +27,6 @@ function checkCollisionWithObstacle(num){
 
       gameState.score+=obstacles[num].score;
       scoreUp(obstacles[num].score);
-      console.log(Math.floor(gameState.score));
       condition1=false;
       condition2=false;
       obstacles[num].states[i].scored=true;}
