@@ -17,8 +17,8 @@ function Obstacle(name, filePath, score){
 }
 function Frisbee() {
     this.startState = {
-      x : 50,
-      y : 350
+      x : 55,
+      y : 340
     }; 
     this.endState = {
       x : 800,
@@ -71,8 +71,8 @@ Frisbee.prototype.drawDisk = function() {
     
    ctxP.clearRect(this.startState.x, this.startState.y, this.image.width ,this.image.height);
    ctxP.drawImage(this.image, this.startState.x, this.startState.y, 60, 25);
-   if(this.startState.x < this.endState.x) { this.startState.x += 2;}
-   if(this.startState.y > this.endState.y) { this.startState.y -= 5/8; }
+   if(this.startState.x < this.endState.x) { this.startState.x += 1;}
+   if(this.startState.y > this.endState.y) { this.startState.y -= 5/16; }
    if(this.startState.x >= this.endState.x && this.startState.y <= this.endState.y) { clearInterval(interval); this.draw(); }
  }, 5);
 };
