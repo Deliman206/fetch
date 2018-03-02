@@ -14,6 +14,7 @@ startCtx.fillRect(0, 0, startCanvas.width, startCanvas.height);
 //Start button press handler
 startDiv.addEventListener('click', function(e){
   //Checks if user clicked on start button
+  //bind enter key
   //Reposition at later point
   if(e.clientX > 296 && e.clientX < 642 && e.clientY < 409 && e.clientY > 276) {
     startDiv.style.visibility = 'hidden'; 

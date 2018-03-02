@@ -2,6 +2,7 @@
 
 var cannon = document.getElementById('cannon');
 var ctxCannon = cannon.getContext('2d');
+var cannonSound = new Audio('sounds/cannon.mp3');
 
 var cannonImages = new Array;
 for (var i = 0; i < 11; i++) {
@@ -9,13 +10,15 @@ for (var i = 0; i < 11; i++) {
   cannonImages[i].src = 'img/cannon/launch' + i + '.png';
 }
 function cannonDie(){
-  for(var x = 0; x<400; x+=2){
+  var x=0;
+  var interval= setInterval(function(){
     ctxCannon.clearRect(0,0,900,500);
     ctxCannon.drawImage(cannonImages[10], 20-x, 40);
-    if (gameState.timer===400){
-      document.removeChild(cannon);
+    x++
+    if (x === 400){
+      clearInterval(interval);
     }
-  }
+  },10);
 }
 function cannonLaunch() {
   var i = 0;
@@ -25,6 +28,7 @@ function cannonLaunch() {
     i++;
     if (i=== 3){
       projectile.drawDisk();
+      setTimeout(cannonSound.play(), 20);
     }
     if (i === cannonImages.length) {
       clearInterval(cannonLaunch);
