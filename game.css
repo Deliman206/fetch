@@ -81,6 +81,10 @@ a:hover {
     background-color: transparent;
 }
 #ui{
+    z-index:6;
+    background-color: transparent;
+}
+#projectile{
     z-index:5;
     background-color: transparent;
 }
@@ -101,4 +105,8 @@ a:hover {
     margin-left: 145px;
     margin-top: 178px;
     width: 360px;
+}
+#cannon{
+  z-index:6;
+  background-color: transparent;
 }

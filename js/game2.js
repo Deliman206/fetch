@@ -139,7 +139,7 @@ function inputCheck(){
         // keyHeldLeft=37; // Allows user to move after superjump in flow
       }
       if(keyPressed===38){
-        console.log(oldInputButton);
+        // console.log(oldInputButton);
         if(oldInputButton===83)
         {
           playerState.jumptime=199;
