@@ -3,18 +3,24 @@
 var content= new Array;
 var scoreSpace=document.getElementById('yourscore');
 
-if(JSON.parse(localStorage.getItem('currentuser')!=='')){
+if(localStorage.getItem('currentuser')){
 var newUser=JSON.parse(localStorage.getItem('currentuser'))
 scoreSpace.textContent=newUser.score;
 content.push(newUser);
-}
+}else
+{newUser=new Object;}
 
+if(localStorage.getItem('scores')){
 var oldContent=JSON.parse(localStorage.getItem('scores'));
+}else
+
+{oldContent=new Array();}
 
 for(var i=0; i<oldContent.length;i++)
 {
   content.push(oldContent[i]);
 }
+
 JSON.parse(localStorage.getItem('scores'));
 //converts score and name into the correct format for storage.
 
