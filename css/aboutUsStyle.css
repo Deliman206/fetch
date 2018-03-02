@@ -89,6 +89,7 @@ footer {
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   transition: all 0.3s;
+  overflow: auto;
 }
 
 .modal-window:target {
@@ -97,12 +98,18 @@ footer {
 }
 
 .modal-window>div {
-  width: 400px;
+  width: 600px;
   position: relative;
   margin: 10% auto;
   padding: 2rem;
-  background: #fff;
-  color: #444;
+  border-radius: 20px;
+  border: 30px solid #ff0687;
+  background: #333;
+  color: white;
+  text-align: center;
+  font-family: 'Josefin Slab', serif;
+  font-size: 20px;
+  line-height: 35px;
 }
 
 .modal-window header {
@@ -112,20 +119,24 @@ footer {
 .modal-close {
   color: #aaa;
   line-height: 50px;
-  font-size: 80%;
+  font-size: 100%;
   position: absolute;
   right: 0;
   text-align: center;
   top: 0;
-  width: 70px;
+  width: 100px;
   text-decoration: none;
 }
 
 .modal-close:hover {
-  color: #000;
+  color: #00ccff;
 }
 
 .modal-window h1 {
   font-size: 150%;
   margin: 0 0 15px;
+}
+
+#octocat {
+  background: transparent;
 }
