@@ -81,6 +81,10 @@ a:hover {
     background-color: transparent;
 }
 #ui{
+    z-index:6;
+    background-color: transparent;
+}
+#projectile{
     z-index:5;
     background-color: transparent;
 }
@@ -92,13 +96,13 @@ a:hover {
 }
 #start-container img {
     position: relative;
-    margin-left: 275px;
+    margin-left: 150px;
     margin-top: 180px;
     width: 350px;
     z-index: 99;
 }
 #start-container img:hover {
-    margin-left: 270px;
+    margin-left: 145px;
     margin-top: 178px;
     width: 360px;
 }

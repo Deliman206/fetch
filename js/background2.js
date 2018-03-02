@@ -1,6 +1,7 @@
 'use strict';
 var carasel2=document.getElementById('background2');
 var ctx2=carasel2.getContext('2d');
+
 //State variable to control Relative Position
 var startState2 ={
   x: 2600,
@@ -22,8 +23,8 @@ bench.src = 'img/sprites/bench.png';
 var slide = new Image(10,5);
 slide.src = 'img/sprites/slide.png';
 
-function drawScene(){
-  setInterval(function(){
+function drawScene2(){
+  var background2Interval = setInterval(function(){
     ctx2.clearRect(0,0,900,500);
     ctx2.drawImage(bench, startState2.x + 510, startState2.y + 120);
     ctx2.drawImage(cloud, startState2.x + 350, startState2.y - 150);
@@ -34,6 +35,10 @@ function drawScene(){
     if(startState2.x< -1300){
       startState2.x = 950;
     }
+    if(stopBackground === true){
+      // ctx2.clearRect(0,0,900,500);
+      clearInterval(background2Interval);
+    }
   },2);
 }
-drawScene(startState2.x,startState2.y);
+// drawScene2(startState2.x,startState2.y);

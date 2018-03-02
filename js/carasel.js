@@ -22,8 +22,8 @@ bench.src = 'img/sprites/bench.png';
 var slide = new Image(10,5);
 slide.src = 'img/sprites/slide.png';
 
-function drawScene(){
-  setInterval(function(){
+function drawScene1(){
+  var background1Interval = setInterval(function(){
     ctx1.clearRect(0,0,900,500);
     ctx1.fillStyle='#00ccff';
     ctx1.fillRect(0,0,carasel.width, carasel.height);
@@ -43,6 +43,10 @@ function drawScene(){
     if(startState.x< -1300){
       startState.x = 950;
     }
+    if(stopBackground === true){
+      // ctx1.clearRect(0,0,900,500);
+      clearInterval(background1Interval);
+    }
   },2);
 }
-drawScene(startState.x,startState.y);
+// drawScene1(startState.x,startState.y);
