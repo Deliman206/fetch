@@ -1,6 +1,6 @@
 # Wireframe Layout
 
-1. levelSelect.html - 
+1. home.html - 
   * this is our index.html page
   * get user Name
   * ask to select level

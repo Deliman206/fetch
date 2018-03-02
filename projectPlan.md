@@ -9,7 +9,7 @@ Fetch
 * Yannick
 
 **Concept:**
-Dog playing fetch
+Dog running over obstacles
 
 **Address details in the Problem Domain:**
 
@@ -20,6 +20,7 @@ Dog playing fetch
 * refer to wireFrame.md
 
 **Proof of life**
+
 * implement key binding
 * Make objects move on canvas
 
