@@ -17,8 +17,8 @@ function Obstacle(name, filePath, score){
 }
 function Frisbee() {
     this.startState = {
-      x : 0,
-      y : 250
+      x : 50,
+      y : 350
     }; 
     this.endState = {
       x : 800,
