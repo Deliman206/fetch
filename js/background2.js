@@ -26,12 +26,10 @@ slide.src = 'img/sprites/slide.png';
 function drawScene2(){
   var background2Interval = setInterval(function(){
     ctx2.clearRect(0,0,900,500);
-    ctx2.drawImage(tulips, startState2.x + 850, startState2.y +170);
     ctx2.drawImage(bench, startState2.x + 510, startState2.y + 120);
     ctx2.drawImage(cloud, startState2.x + 350, startState2.y - 150);
-    ctx2.drawImage(tulips, startState2.x + 650, startState2.y +170);
-    ctx2.drawImage(bush, startState2.x - 100, startState2.y +150);
     ctx2.drawImage(lamp, startState2.x + 300, startState2.y + 20);
+    ctx2.drawImage(tulips, startState2.x, startState2.y +170);
     ctx2.drawImage(tree1, startState2.x + 50, startState2.y - 70);
     startState2.x--;
     if(startState2.x< -1300){
