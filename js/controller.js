@@ -44,7 +44,7 @@ function loadGame(){
     allowScoring();
   }},5)
 }
-function win(){playerState.score+=50;
+function win(){gameState.score+=50;
   clearInterval(timerFunctionID);
   playable=false;
   console.log('you win')
@@ -53,7 +53,7 @@ function win(){playerState.score+=50;
   stopPlayer = true;
   stopObstacles = true;
   stopProjectile = true;
-  currentUser.score=playerState.score;
+  currentUser.score=gameState.score;
   console.log(currentUser);
   localStorage.setItem('currentuser',JSON.stringify(currentUser))
   setTimeout(function(){window.location.href = 'highscore.html'},1000);

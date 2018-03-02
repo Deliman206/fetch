@@ -60,7 +60,7 @@ Obstacle.prototype.drawObstacle= function(time){
 Frisbee.prototype.draw = function() {
     const ground = 350;
     var intervalDrop = setInterval(()=>{
-      ctxP.clearRect(this.startState.x, this.startState.y, this.image.width ,this.image.height);
+      ctxP.clearRect(this.startState.x-5, this.startState.y-5, this.image.width+5 ,this.image.height+15);
       ctxP.drawImage(this.image, this.startState.x, this.startState.y);
       this.startState.y += 1/(3*levelDiff);
       //If frisbee has hit the ground = stop execution
@@ -74,7 +74,7 @@ Frisbee.prototype.drawDisk = function() {
  var interval = setInterval(()=>{
     frisbeeTimer++;
     
-   ctxP.clearRect(this.startState.x, this.startState.y, this.image.width ,this.image.height);
+   ctxP.clearRect(this.startState.x-5, this.startState.y, this.image.width+5 ,this.image.height);
    ctxP.drawImage(this.image, this.startState.x, this.startState.y);
    if(this.startState.x < this.endState.x) { this.startState.x += 1;}
    if(this.startState.y > this.endState.y) { this.startState.y -= 5/16; }

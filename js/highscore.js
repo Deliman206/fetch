@@ -1,7 +1,7 @@
 'usestrict';
 //localStorage needs to be fed an array of objects with properties name and score.
 var content=JSON.parse(localStorage.getItem('scores'));
-var newUser=JSON.parse(localStorage.getItem('currentUser'));
+var newUser=JSON.parse(localStorage.getItem('currentuser'));
 var scoreSpace=document.getElementById('yourscore');
 //converts score and name into the correct format for storage.
 scoreSpace.textContent=newUser.score;
